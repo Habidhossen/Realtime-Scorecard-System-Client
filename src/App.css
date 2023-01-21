@@ -1,38 +1,24 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Charmonman&family=Jost:wght@300;400;500&family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Charmonman", cursive;
+  font-family: "Jost", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--bgColor);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+:root {
+  --primary: #f52225;
+  --green: #1cbe59;
+  --purple: #8067f0;
+  --orange: #f75023;
+  --heading: #0f172a;
+  --text: #555264;
+  --bgColor: #f6f6f6;
+  --jostFont: "Jost", sans-serif;
 }
