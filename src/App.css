@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Charmonman&family=Jost:wght@300;400;500&family=Open+Sans:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap");
 
 * {
   padding: 0;
@@ -6,9 +6,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Charmonman", cursive;
-  font-family: "Jost", sans-serif;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   background-color: var(--bgColor);
 }
 
@@ -19,6 +17,6 @@ body {
   --orange: #f75023;
   --heading: #0f172a;
   --text: #555264;
-  --bgColor: #f6f6f6;
+  --bgColor: #f4f4f4f4;
   --jostFont: "Jost", sans-serif;
 }

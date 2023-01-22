@@ -1,9 +1,10 @@
 import "./App.css";
+import Navbar from "./pages/Shared/Navbar/Navbar";
 
 function App() {
   return (
     <div>
-      <h1>Welcome to Real-time Scorecard System Application</h1>
+      <Navbar />
     </div>
   );
 }
