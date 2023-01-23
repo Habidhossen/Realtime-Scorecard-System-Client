@@ -34,7 +34,7 @@ const Login = () => {
           margin: "150px auto",
         }}
       >
-        <Typography variant="h6" textAlign="center" mb={4}>
+        <Typography variant="h6" textAlign="center" fontWeight="600" mb={4}>
           Please login
         </Typography>
 
