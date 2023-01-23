@@ -1,10 +1,11 @@
 import "./App.css";
-import Navbar from "./pages/Shared/Navbar/Navbar";
+import Login from "./pages/Login/Login";
 
 function App() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
+      <Login />
     </div>
   );
 }
