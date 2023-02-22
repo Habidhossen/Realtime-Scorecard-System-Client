@@ -1,14 +1,33 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import Navbar from "./pages/Shared/Navbar/Navbar";
+import Main from "./Layouts/Main/Main";
+import Home from "./pages/Home/Home/Home";
+import Login from "./pages/Login/Login";
+import DisplayError from "./pages/Shared/DisplayError/DisplayError";
+import Signup from "./pages/Signup/Signup";
 import { theme } from "./theme/theme";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Navbar />,
+      element: <Main />,
+      errorElement: <DisplayError />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/signup",
+          element: <Signup />,
+        },
+      ],
     },
   ]);
 

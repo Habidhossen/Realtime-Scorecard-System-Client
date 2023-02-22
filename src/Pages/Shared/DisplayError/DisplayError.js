@@ -1,6 +1,6 @@
 import React from "react";
 
-const NotFound = () => {
+const DisplayError = () => {
   return (
     <div>
       <h1>Not Found!</h1>
@@ -8,4 +8,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default DisplayError;

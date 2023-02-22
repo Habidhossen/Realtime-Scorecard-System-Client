@@ -9,7 +9,6 @@ import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import PropTypes from "prop-types";
 import * as React from "react";
 import { Link } from "react-router-dom";
 
@@ -19,7 +18,7 @@ const drawerWidth = 240;
 const navItems = [
   {
     name: "Home",
-    href: "home",
+    href: "",
   },
   {
     name: "Watch Live",
@@ -138,23 +137,8 @@ const Navbar = (props) => {
           {drawer}
         </Drawer>
       </Box>
-      {/* <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
-        <Typography>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
-          unde fugit veniam eius, perspiciatis sunt? Corporis qui ducimus
-        </Typography>
-      </Box> */}
     </Box>
   );
-};
-
-Navbar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
 };
 
 export default Navbar;
