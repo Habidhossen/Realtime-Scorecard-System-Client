@@ -1,4 +1,5 @@
 import MenuIcon from "@mui/icons-material/Menu";
+import { Button, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -21,44 +22,22 @@ const navItems = [
     href: "home",
   },
   {
+    name: "Watch Live",
+    href: "live",
+  },
+  {
+    name: "Match Schedule",
+    href: "schedule",
+  },
+  {
+    name: "Sports News",
+    href: "blogs",
+  },
+  {
     name: "About",
     href: "about",
   },
-  {
-    name: "Contact",
-    href: "contact",
-  },
 ];
-
-/* const menuItems = (
-  <>
-    <li>
-      <NavLink className="nav-link" to="/">
-        Home
-      </NavLink>
-    </li>
-    <li>
-      <NavLink className="nav-link" to="/courses">
-        Courses
-      </NavLink>
-    </li>
-    <li>
-      <NavLink className="nav-link" to="/semester">
-        Semester
-      </NavLink>
-    </li>
-    <li>
-      <NavLink className="nav-link" to="/department">
-        Department
-      </NavLink>
-    </li>
-    <li>
-      <NavLink className="nav-link" to="/about">
-        About
-      </NavLink>
-    </li>
-  </>
-); */
 
 const Navbar = (props) => {
   const { window } = props;
@@ -75,17 +54,21 @@ const Navbar = (props) => {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <li>
-            <Link to={item.href}>{item.name}</Link>
-          </li>
-          // <ListItem key={item} disablePadding>
-          //   <ListItemButton sx={{ textAlign: "center" }}>
-          //     <ListItemText primary={item} />
-          //   </ListItemButton>
-          // </ListItem>
+        {navItems.map((item, index) => (
+          <ListItem key={index} disablePadding>
+            <ListItemButton
+              component={Link}
+              to={item.href}
+              sx={{ textAlign: "center" }}
+            >
+              <ListItemText primary={item.name} />
+            </ListItemButton>
+          </ListItem>
         ))}
       </List>
+      <Button variant="outlined" color="secondary" component={Link} to="/login">
+        Login
+      </Button>
     </Box>
   );
 
@@ -95,7 +78,7 @@ const Navbar = (props) => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar component="nav" color="transparent" elevation={0}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -114,16 +97,24 @@ const Navbar = (props) => {
             Scorecard
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {navItems.map((item) => (
-              <Link to={item.href}>{item.name}</Link>
-
-              // <Button
-              //   key={item}
-              //   sx={{ color: "#fff", textTransform: "capitalize" }}
-              // >
-              //   {item}
-              // </Button>
+            {navItems.map((item, index) => (
+              <Button
+                key={index}
+                component={Link}
+                to={item.href}
+                sx={{ color: "#000", textTransform: "capitalize" }}
+              >
+                {item.name}
+              </Button>
             ))}
+            <Button
+              variant="outlined"
+              color="secondary"
+              component={Link}
+              to="/login"
+            >
+              Login
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
