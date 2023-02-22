@@ -1,22 +1,64 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+// const navItems = ["Home", "About", "Contact"];
+
+const navItems = [
+  {
+    name: "Home",
+    href: "home",
+  },
+  {
+    name: "About",
+    href: "about",
+  },
+  {
+    name: "Contact",
+    href: "contact",
+  },
+];
+
+/* const menuItems = (
+  <>
+    <li>
+      <NavLink className="nav-link" to="/">
+        Home
+      </NavLink>
+    </li>
+    <li>
+      <NavLink className="nav-link" to="/courses">
+        Courses
+      </NavLink>
+    </li>
+    <li>
+      <NavLink className="nav-link" to="/semester">
+        Semester
+      </NavLink>
+    </li>
+    <li>
+      <NavLink className="nav-link" to="/department">
+        Department
+      </NavLink>
+    </li>
+    <li>
+      <NavLink className="nav-link" to="/about">
+        About
+      </NavLink>
+    </li>
+  </>
+); */
 
 const Navbar = (props) => {
   const { window } = props;
@@ -34,11 +76,14 @@ const Navbar = (props) => {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
+          <li>
+            <Link to={item.href}>{item.name}</Link>
+          </li>
+          // <ListItem key={item} disablePadding>
+          //   <ListItemButton sx={{ textAlign: "center" }}>
+          //     <ListItemText primary={item} />
+          //   </ListItemButton>
+          // </ListItem>
         ))}
       </List>
     </Box>
@@ -70,12 +115,14 @@ const Navbar = (props) => {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button
-                key={item}
-                sx={{ color: "#fff", textTransform: "capitalize" }}
-              >
-                {item}
-              </Button>
+              <Link to={item.href}>{item.name}</Link>
+
+              // <Button
+              //   key={item}
+              //   sx={{ color: "#fff", textTransform: "capitalize" }}
+              // >
+              //   {item}
+              // </Button>
             ))}
           </Box>
         </Toolbar>

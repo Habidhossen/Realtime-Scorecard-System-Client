@@ -1,14 +1,14 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import Login from "./pages/Login/Login";
+import Navbar from "./pages/Shared/Navbar/Navbar";
 import { theme } from "./theme/theme";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Login />,
+      element: <Navbar />,
     },
   ]);
 
