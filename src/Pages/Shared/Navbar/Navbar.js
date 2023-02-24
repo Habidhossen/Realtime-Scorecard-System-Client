@@ -95,6 +95,13 @@ const Navbar = (props) => {
           >
             Scorecard
           </Typography>
+          {/* <Box
+            component={Link}
+            to="/h"
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+            Scorecard
+          </Box> */}
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (
               <Button
