@@ -12,10 +12,16 @@ const CurrentMatch = () => {
         alignItems: "center",
       }}
     >
+      <Typography variant="h6">Live Match</Typography>
       <Box my={3} sx={{ display: "flex", alignItems: "center" }}>
         <Typography variant="h4">Team A</Typography>
-        <Chip label="VS" color="primary" size="small" />
-        <Typography variant="h4">Team A</Typography>
+        <Chip
+          label="VS"
+          color="primary"
+          size="small"
+          sx={{ marginX: "20px" }}
+        />
+        <Typography variant="h4">Team B</Typography>
       </Box>
       <Box
         sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
