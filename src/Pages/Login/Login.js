@@ -8,12 +8,12 @@ import {
   InputLabel,
   OutlinedInput,
   TextField,
-  Typography
+  Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
@@ -47,7 +47,6 @@ const Login = () => {
             required
           />
         </FormControl>
-
         <FormControl
           sx={{ mb: 3 }}
           variant="outlined"
@@ -75,7 +74,6 @@ const Login = () => {
             label="Password"
           />
         </FormControl>
-
         <Button
           type="submit"
           variant="contained"
@@ -84,6 +82,9 @@ const Login = () => {
         >
           Login
         </Button>
+        <Typography variant="p" textAlign="center" mt={2}>
+          Don't have an account? <Link to="/signup">Register now</Link>
+        </Typography>
       </Box>
     </form>
   );

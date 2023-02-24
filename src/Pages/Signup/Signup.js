@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -92,6 +93,9 @@ const Signup = () => {
         >
           Register
         </Button>
+        <Typography variant="p" textAlign="center" mt={2}>
+          Already have an account? <Link to="/login">Login now</Link>
+        </Typography>
       </Box>
     </form>
   );
