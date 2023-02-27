@@ -2,6 +2,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Main from "./Layouts/Main/Main";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import Home from "./pages/Home/Home/Home";
 import Login from "./pages/Login/Login";
 import DisplayError from "./pages/Shared/DisplayError/DisplayError";
@@ -28,6 +29,11 @@ function App() {
           element: <Signup />,
         },
       ],
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />,
+      errorElement: <DisplayError />,
     },
   ]);
 
