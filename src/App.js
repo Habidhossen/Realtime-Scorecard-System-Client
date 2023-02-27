@@ -1,42 +1,10 @@
 import { ThemeProvider } from "@mui/material/styles";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import Main from "./Layouts/Main/Main";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Home from "./pages/Home/Home/Home";
-import Login from "./pages/Login/Login";
-import DisplayError from "./pages/Shared/DisplayError/DisplayError";
-import Signup from "./pages/Signup/Signup";
+import router from "./routes/Routes/Routes";
 import { theme } from "./theme/theme";
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main />,
-      errorElement: <DisplayError />,
-      children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/login",
-          element: <Login />,
-        },
-        {
-          path: "/signup",
-          element: <Signup />,
-        },
-      ],
-    },
-    {
-      path: "/dashboard",
-      element: <Dashboard />,
-      errorElement: <DisplayError />,
-    },
-  ]);
-
   return (
     <div>
       <ThemeProvider theme={theme}>

@@ -30,7 +30,7 @@ import MuiDrawer from "@mui/material/Drawer";
 import { styled } from "@mui/material/styles";
 import * as React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
 const AppBar = styled(MuiAppBar, {
@@ -225,6 +225,7 @@ const Dashboard = () => {
         <Toolbar />
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
           {/* Dashboard main content here... */}
+          <Outlet />
         </Container>
       </Box>
     </Box>
