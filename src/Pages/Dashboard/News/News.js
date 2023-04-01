@@ -1,3 +1,4 @@
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import {
   Box,
   Button,
@@ -8,11 +9,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import NewsTable from "./NewsTable";
 
 const News = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -61,6 +62,15 @@ const News = () => {
               fullWidth
               variant="standard"
             />
+            <Button
+              sx={{ marginTop: "10px" }}
+              variant="outlined"
+              component="label"
+              startIcon={<PhotoCamera />}
+            >
+              Upload Cover Image
+              <input hidden accept="image/*" multiple type="file" />
+            </Button>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
