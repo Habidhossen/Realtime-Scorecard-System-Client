@@ -6,6 +6,7 @@ import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
 import Football from "../../pages/Dashboard/Football/Football";
 import LiveStreaming from "../../pages/Dashboard/LiveStreaming/LiveStreaming";
 import MakeAdmin from "../../pages/Dashboard/MakeAdmin/MakeAdmin";
+import News from "../../pages/Dashboard/News/News";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
 import DisplayError from "../../pages/Shared/DisplayError/DisplayError";
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/football",
         element: <Football />,
+      },
+      {
+        path: "/dashboard/add-news",
+        element: <News />,
       },
       {
         path: "/dashboard/account",

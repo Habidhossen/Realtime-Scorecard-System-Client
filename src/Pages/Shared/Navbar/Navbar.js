@@ -75,7 +75,7 @@ const Navbar = (props) => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" color="transparent" elevation={0}>
+      <AppBar component="nav" color="primary" elevation={0}>
         <Toolbar>
           <IconButton
             color="inherit"
