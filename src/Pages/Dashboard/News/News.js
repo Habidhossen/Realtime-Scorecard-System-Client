@@ -26,7 +26,7 @@ const News = () => {
     setOpen(false);
   };
 
-  // handle form data
+  // handle react-hook-form
   const {
     register,
     formState: { errors },
@@ -34,6 +34,7 @@ const News = () => {
     reset,
   } = useForm();
 
+  // handle form data
   const onSubmit = (data) => {
     console.log(data);
     handleClose();

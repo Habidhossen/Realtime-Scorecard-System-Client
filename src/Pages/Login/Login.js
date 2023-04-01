@@ -1,92 +1,65 @@
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  FormControl,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
+  // handle react-hook-form
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
+  // handle form data
+  const onSubmit = (data) => {
+    console.log(data);
   };
 
   return (
-    <form>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          backgroundColor: "#fff",
-          width: "350px",
-          padding: "40px 30px",
-          borderRadius: "10px",
-          margin: "150px auto",
-        }}
-      >
-        <Typography variant="h6" textAlign="center" fontWeight="600" mb={4}>
-          Please login
-        </Typography>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "#fff",
+        width: "350px",
+        padding: "40px 30px",
+        borderRadius: "10px",
+        margin: "150px auto",
+      }}
+      component="form"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <Typography variant="h6" textAlign="center" fontWeight="600" mb={4}>
+        Please login
+      </Typography>
 
-        <FormControl sx={{ mb: 2 }} variant="outlined">
-          <TextField
-            id=""
-            type="email"
-            label="Email"
-            variant="outlined"
-            color="secondary"
-            required
-          />
-        </FormControl>
-        <FormControl
-          sx={{ mb: 3 }}
+      <FormControl sx={{ mb: 2 }} variant="outlined">
+        <TextField
+          type="email"
+          label="Email"
           variant="outlined"
           color="secondary"
-          required
-        >
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showPassword ? "text" : "password"}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  // aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
-        <Button
-          type="submit"
-          variant="contained"
+          {...register("email", { required: true })}
+          error={errors.email}
+          helperText={errors.email && "Email is required"}
+        />
+      </FormControl>
+      <FormControl sx={{ mb: 5 }} variant="outlined">
+        <TextField
+          type="password"
+          label="Password"
+          variant="outlined"
           color="secondary"
-          size="large"
-        >
-          Login
-        </Button>
-        <Typography variant="p" textAlign="center" mt={2}>
-          Don't have an account? <Link to="/signup">Register now</Link>
-        </Typography>
-      </Box>
-    </form>
+          {...register("password", { required: true })}
+          error={errors.password}
+          helperText={errors.password && "Password is required"}
+        />
+      </FormControl>
+      <Button type="submit" variant="contained" color="secondary" size="large">
+        Login
+      </Button>
+    </Box>
   );
 };
 
