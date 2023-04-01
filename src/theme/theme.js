@@ -14,6 +14,9 @@ export const theme = createTheme({
       green: "#1cbe59",
       purple: "#8067f0",
     },
+    white: {
+      main: "#ffffff",
+    },
   },
 
   // font customization

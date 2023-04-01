@@ -75,7 +75,7 @@ const Navbar = (props) => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" color="primary" elevation={0}>
+      <AppBar component="nav" elevation={0} color="white">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -89,6 +89,7 @@ const Navbar = (props) => {
           <Typography
             variant="h6"
             component="div"
+            color="primary"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             Scorecard
