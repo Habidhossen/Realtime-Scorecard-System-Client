@@ -4,15 +4,19 @@ export const theme = createTheme({
   // color palette customization
   palette: {
     primary: {
-      main: "#8067f0",
+      main: "#120942",
     },
     secondary: {
-      main: "#f52225",
+      main: "#416a59",
     },
-    custom: {
-      red: "#f52225",
-      green: "#1cbe59",
-      purple: "#8067f0",
+    accent: {
+      main: "#943d24",
+    },
+    heading: {
+      main: "#0f172a",
+    },
+    text: {
+      main: "#555264",
     },
     white: {
       main: "#ffffff",

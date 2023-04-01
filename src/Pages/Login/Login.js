@@ -39,7 +39,7 @@ const Login = () => {
           type="email"
           label="Email"
           variant="outlined"
-          color="secondary"
+          color="primary"
           {...register("email", { required: true })}
           error={errors.email}
           helperText={errors.email && "Email is required"}
@@ -50,13 +50,13 @@ const Login = () => {
           type="password"
           label="Password"
           variant="outlined"
-          color="secondary"
+          color="primary"
           {...register("password", { required: true })}
           error={errors.password}
           helperText={errors.password && "Password is required"}
         />
       </FormControl>
-      <Button type="submit" variant="contained" color="secondary" size="large">
+      <Button type="submit" variant="contained" color="primary" size="large">
         Login
       </Button>
     </Box>
