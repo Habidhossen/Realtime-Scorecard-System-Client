@@ -10,16 +10,33 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import NewsTable from "./NewsTable";
 
 const News = () => {
+  // modal state
   const [open, setOpen] = useState(false);
 
+  // modal open
   const handleClickOpen = () => {
     setOpen(true);
   };
+  // modal close
   const handleClose = () => {
     setOpen(false);
+  };
+
+  // handle form data
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    handleClose();
   };
 
   return (
@@ -39,7 +56,12 @@ const News = () => {
             Add New blog
           </Button>
         </Box>
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          component="form"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <DialogTitle>Create a new blog post</DialogTitle>
           <DialogContent>
             <TextField
@@ -50,6 +72,9 @@ const News = () => {
               type="text"
               fullWidth
               variant="standard"
+              {...register("title", { required: true })}
+              error={errors.title}
+              helperText={errors.title && "Blog title is required"}
             />
             <TextField
               autoFocus
@@ -61,6 +86,9 @@ const News = () => {
               rows={4}
               fullWidth
               variant="standard"
+              {...register("content", { required: true })}
+              error={errors.content}
+              helperText={errors.content && "Blog content is required"}
             />
             <Button
               sx={{ marginTop: "10px" }}
@@ -74,7 +102,7 @@ const News = () => {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
-            <Button onClick={handleClose}>Save</Button>
+            <Button type="submit">Save</Button>
           </DialogActions>
         </Dialog>
       </Box>
