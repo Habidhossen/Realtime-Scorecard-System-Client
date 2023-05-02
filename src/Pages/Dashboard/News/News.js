@@ -72,7 +72,8 @@ const News = () => {
               label="Title"
               type="text"
               fullWidth
-              variant="standard"
+              variant="outlined"
+              size="small"
               {...register("title", { required: true })}
               error={errors.title}
               helperText={errors.title && "Blog title is required"}
@@ -86,7 +87,8 @@ const News = () => {
               multiline
               rows={4}
               fullWidth
-              variant="standard"
+              variant="outlined"
+              size="small"
               {...register("content", { required: true })}
               error={errors.content}
               helperText={errors.content && "Blog content is required"}

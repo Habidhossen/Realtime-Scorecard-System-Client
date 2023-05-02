@@ -84,7 +84,7 @@ const Events = () => {
             />
 
             <TextField
-              sx={{ width: "50%", paddingRight: "4px" }}
+              sx={{ width: "50%", paddingRight: "8px" }}
               autoFocus
               margin="dense"
               id="startDate"
@@ -101,7 +101,7 @@ const Events = () => {
             />
 
             <TextField
-              sx={{ width: "50%", paddingLeft: "4px", marginBottom: "8px" }}
+              sx={{ width: "50%", marginBottom: "8px" }}
               autoFocus
               margin="dense"
               id="endDate"
