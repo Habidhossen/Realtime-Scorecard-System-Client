@@ -39,6 +39,8 @@ const Cricket = () => {
 
   // handle form data
   const onSubmit = (data) => {
+    // const newTossWinner = data.tossWinner === "teamA" ? data.teamA : data.teamB;
+
     console.log(data);
     handleClose();
   };
@@ -68,6 +70,7 @@ const Cricket = () => {
         >
           <DialogTitle>Create a new cricket match</DialogTitle>
 
+          {/* Match Basic Info */}
           <DialogContent>
             <TextField
               sx={{ width: "50%", paddingRight: "8px" }}
@@ -109,8 +112,8 @@ const Cricket = () => {
                 {...register("tossWinner", { required: true })}
                 error={errors.tossWinner}
               >
-                <MenuItem value="Team A">Team A</MenuItem>
-                <MenuItem value="Team B">Team B</MenuItem>
+                <MenuItem value="teamA">Team A</MenuItem>
+                <MenuItem value="teamB">Team B</MenuItem>
               </Select>
               <FormHelperText sx={{ color: "#d32f2f" }}>
                 {errors.tossWinner && "Toss Winner is required"}
@@ -184,7 +187,43 @@ const Cricket = () => {
               error={errors.date}
               helperText={errors.date && "Date is required"}
             />
+
+            {/* Team A Info */}
+            <Typography
+              component="h6"
+              variant="h6"
+              sx={{ fontSize: "14px", marginTop: "10px" }}
+            >
+              Team A Information
+            </Typography>
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamAPlayer1Name"
+              label="Player 1 Name"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamAPlayer1Name")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamAPlayer1Type">Player Type</InputLabel>
+              <Select
+                labelId="teamAPlayer1Type"
+                id="teamAPlayer1Type"
+                label="Player Type"
+                {...register("teamAPlayer1Type")}
+              >
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+              </Select>
+            </FormControl>
           </DialogContent>
+
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
             <Button type="submit">Save</Button>
