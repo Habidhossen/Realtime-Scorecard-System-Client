@@ -51,7 +51,7 @@ const News = () => {
           }}
         >
           <Typography component="h6" variant="h6" sx={{ fontWeight: "bold" }}>
-            All Blogs
+            Manage Sport Blogs
           </Typography>
           <Button variant="contained" onClick={handleClickOpen}>
             Add New blog
@@ -107,6 +107,7 @@ const News = () => {
           </DialogActions>
         </Dialog>
       </Box>
+      {/* render table components */}
       <NewsTable />
     </Box>
   );

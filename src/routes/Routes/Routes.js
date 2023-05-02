@@ -1,8 +1,10 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layouts/Main/Main";
 import AdminProfile from "../../pages/Dashboard/AdminProfile/AdminProfile";
 import Cricket from "../../pages/Dashboard/Cricket/Cricket";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
+import Events from "../../pages/Dashboard/Events/Events";
 import Football from "../../pages/Dashboard/Football/Football";
 import LiveStreaming from "../../pages/Dashboard/LiveStreaming/LiveStreaming";
 import MakeAdmin from "../../pages/Dashboard/MakeAdmin/MakeAdmin";
@@ -54,8 +56,12 @@ const router = createBrowserRouter([
         element: <Football />,
       },
       {
-        path: "/dashboard/add-news",
+        path: "/dashboard/news",
         element: <News />,
+      },
+      {
+        path: "/dashboard/events",
+        element: <Events />,
       },
       {
         path: "/dashboard/account",

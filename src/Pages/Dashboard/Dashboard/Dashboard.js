@@ -167,14 +167,14 @@ const Dashboard = () => {
             <ListItemText primary="Football Match" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to="add-news">
+          <ListItemButton component={Link} to="news">
             <ListItemIcon>
               <ArticleRounded />
             </ListItemIcon>
             <ListItemText primary="Sports News" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to="create-event">
+          <ListItemButton component={Link} to="events">
             <ListItemIcon>
               <EmojiEventsRounded />
             </ListItemIcon>
