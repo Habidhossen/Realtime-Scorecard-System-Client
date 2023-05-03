@@ -39,9 +39,43 @@ const Cricket = () => {
 
   // handle form data
   const onSubmit = (data) => {
-    // const newTossWinner = data.tossWinner === "teamA" ? data.teamA : data.teamB;
+    // {
+    //   date: "2023-05-04";
+    //   teamA: "BD";
+    //   teamAPlayer1Name: "Sakib Al Hasan";
+    //   teamAPlayer1Type: "All-rounder";
+    //   teamB: "IND";
+    //   tossChoice: "Bat";
+    //   tossWinner: "teamA";
+    //   totalOver: "10";
+    //   venue: "Dhaka";
+    // }
 
-    console.log(data);
+    const newMatchData = {
+      teamNameA: data.teamA,
+      teamNameB: data.teamB,
+      tossWinner: data.tossWinner === "teamA" ? data.teamA : data.teamB,
+      tossChoice: data.tossChoice,
+      totalOver: data.totalOver,
+      venue: data.venue,
+      date: data.date,
+      teamInfoA: {
+        player1: {
+          name: data.teamAPlayer1Name,
+          type: data.teamAPlayer1Type,
+        },
+        player2: {
+          name: data.teamAPlayer1Name,
+          type: data.teamAPlayer1Type,
+        },
+      },
+    };
+
+    console.log(newMatchData);
+    // console.log(
+    //   `${newMatchData.tossWinner} won the toss and elected to ${newMatchData.tossChoice} first`
+    // );
+
     handleClose();
   };
 
