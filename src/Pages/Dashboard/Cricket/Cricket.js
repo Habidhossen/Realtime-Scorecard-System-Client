@@ -39,16 +39,6 @@ const Cricket = () => {
 
   // handle form data
   const onSubmit = (data) => {
-    // {
-    //   teamNameA: "BD";
-    //   teamNameB: "IND";
-    //   tossChoice: "Bat";
-    //   tossWinner: "BD";
-    //   totalOver: "10";
-    //   venue: "Dhaka";
-    //   date: "2023-05-04";
-    // }
-
     const newMatchData = {
       teamNameA: data.teamA,
       teamNameB: data.teamB,
@@ -82,6 +72,26 @@ const Cricket = () => {
           name: data.teamAPlayerName5,
           type: data.teamAPlayerType5,
         },
+        player6: {
+          name: data.teamAPlayerName6,
+          type: data.teamAPlayerType6,
+        },
+        player7: {
+          name: data.teamAPlayerName7,
+          type: data.teamAPlayerType7,
+        },
+        player8: {
+          name: data.teamAPlayerName8,
+          type: data.teamAPlayerType8,
+        },
+        player9: {
+          name: data.teamAPlayerName9,
+          type: data.teamAPlayerType9,
+        },
+        player10: {
+          name: data.teamAPlayerName10,
+          type: data.teamAPlayerType10,
+        },
       },
       teamInfoB: {
         captain: {
@@ -108,8 +118,100 @@ const Cricket = () => {
           name: data.teamBPlayerName5,
           type: data.teamBPlayerType5,
         },
+        player6: {
+          name: data.teamBPlayerName6,
+          type: data.teamBPlayerType6,
+        },
+        player7: {
+          name: data.teamBPlayerName7,
+          type: data.teamBPlayerType7,
+        },
+        player8: {
+          name: data.teamBPlayerName8,
+          type: data.teamBPlayerType8,
+        },
+        player9: {
+          name: data.teamBPlayerName9,
+          type: data.teamBPlayerType9,
+        },
+        player10: {
+          name: data.teamBPlayerName10,
+          type: data.teamBPlayerType10,
+        },
       },
     };
+
+    /* Sample Output: 
+    {
+  teamNameA: "BD",
+  teamNameB: "IND",
+  tossChoice: "Bat",
+  tossWinner: "BD",
+  totalOver: "10",
+  venue: "Dhaka",
+  date: "2023-05-04",
+  teamInfoA: {
+    captain: {
+      name: "Sakib Al Hasan",
+      type: "All-rounder",
+    },
+    player1: {
+      name: "",
+      type: "",
+    },
+    player2: {
+      name: "",
+      type: "",
+    },
+    player3: {
+      name: "",
+      type: "",
+    },
+    player4: {
+      name: "",
+      type: "",
+    },
+    player5: {
+      name: "",
+      type: "",
+    }
+  },
+  teamInfoB: {
+    captain: {
+      name: "Sakib Al Hasan",
+      type: "All-rounder",
+    },
+    player1: {
+      name: "",
+      type: "",
+    },
+    player2: {
+      name: "",
+      type: "",
+    },
+    player3: {
+      name: "",
+      type: "",
+    },
+    player4: {
+      name: "",
+      type: "",
+    },
+    player5: {
+      name: "",
+      type: "",
+    }
+  }
+}
+    */
+    /* 
+    Convert Date-time to Local Date and Time -->
+    const input = "2023-05-04T15:00";
+    const date = new Date(input);
+    const formattedDate = date.toLocaleDateString("en-US");
+    const formattedTime = date.toLocaleTimeString("en-US");
+    console.log(formattedDate); // Output: "5/4/2023"
+    console.log(formattedTime); // Output: "3:00:00 PM" */
 
     console.log(newMatchData);
     // console.log(
@@ -244,7 +346,7 @@ const Cricket = () => {
               margin="dense"
               id="date"
               label="Date"
-              type="date"
+              type="datetime-local"
               fullWidth
               variant="outlined"
               size="small"
@@ -451,6 +553,151 @@ const Cricket = () => {
               </Select>
             </FormControl>
 
+            {/* Player 6 */}
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamAPlayerName6"
+              label="Player Name 6"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamAPlayerName6")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamAPlayerType6">Player Type</InputLabel>
+              <Select
+                labelId="teamAPlayerType6"
+                id="teamAPlayerType6"
+                label="Player Type"
+                defaultValue="All-rounder"
+                {...register("teamAPlayerType6")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Player 7 */}
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamAPlayerName7"
+              label="Player Name 7"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamAPlayerName7")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamAPlayerType7">Player Type</InputLabel>
+              <Select
+                labelId="teamAPlayerType7"
+                id="teamAPlayerType7"
+                label="Player Type"
+                defaultValue="All-rounder"
+                {...register("teamAPlayerType7")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Player 8 */}
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamAPlayerName8"
+              label="Player Name 8"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamAPlayerName8")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamAPlayerType8">Player Type</InputLabel>
+              <Select
+                labelId="teamAPlayerType8"
+                id="teamAPlayerType8"
+                label="Player Type"
+                defaultValue="All-rounder"
+                {...register("teamAPlayerType8")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Player 9 */}
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamAPlayerName9"
+              label="Player Name 9"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamAPlayerName9")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamAPlayerType9">Player Type</InputLabel>
+              <Select
+                labelId="teamAPlayerType9"
+                id="teamAPlayerType9"
+                label="Player Type"
+                defaultValue="All-rounder"
+                {...register("teamAPlayerType9")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Player 10 */}
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamAPlayerName10"
+              label="Player Name 10"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamAPlayerName10")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamAPlayerType10">Player Type</InputLabel>
+              <Select
+                labelId="teamAPlayerType10"
+                id="teamAPlayerType10"
+                label="Player Type"
+                defaultValue="All-rounder"
+                {...register("teamAPlayerType10")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
             {/* Team B Info */}
             <Typography
               component="h6"
@@ -637,6 +884,151 @@ const Cricket = () => {
                 label="Player Type"
                 defaultValue="All-rounder"
                 {...register("teamBPlayerType5")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Player 6 */}
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamBPlayerName6"
+              label="Player Name 6"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamBPlayerName6")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamBPlayerType6">Player Type</InputLabel>
+              <Select
+                labelId="teamBPlayerType6"
+                id="teamBPlayerType6"
+                label="Player Type"
+                defaultValue="All-rounder"
+                {...register("teamBPlayerType6")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Player 7 */}
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamBPlayerName7"
+              label="Player Name 7"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamBPlayerName7")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamBPlayerType7">Player Type</InputLabel>
+              <Select
+                labelId="teamBPlayerType7"
+                id="teamBPlayerType7"
+                label="Player Type"
+                defaultValue="All-rounder"
+                {...register("teamBPlayerType7")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Player 8 */}
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamBPlayerName8"
+              label="Player Name 8"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamBPlayerName8")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamBPlayerType8">Player Type</InputLabel>
+              <Select
+                labelId="teamBPlayerType8"
+                id="teamBPlayerType8"
+                label="Player Type"
+                defaultValue="All-rounder"
+                {...register("teamBPlayerType8")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Player 9 */}
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamBPlayerName9"
+              label="Player Name 9"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamBPlayerName9")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamBPlayerType9">Player Type</InputLabel>
+              <Select
+                labelId="teamBPlayerType9"
+                id="teamBPlayerType9"
+                label="Player Type"
+                defaultValue="All-rounder"
+                {...register("teamBPlayerType9")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Player 10 */}
+            <TextField
+              sx={{ width: "50%", paddingRight: "8px" }}
+              autoFocus
+              margin="dense"
+              id="teamBPlayerName10"
+              label="Player Name 10"
+              type="text"
+              variant="outlined"
+              size="small"
+              {...register("teamBPlayerName10")}
+            />
+            <FormControl sx={{ width: "50%", marginTop: "8px" }} size="small">
+              <InputLabel id="teamBPlayerType10">Player Type</InputLabel>
+              <Select
+                labelId="teamBPlayerType10"
+                id="teamBPlayerType10"
+                label="Player Type"
+                defaultValue="All-rounder"
+                {...register("teamBPlayerType10")}
               >
                 <MenuItem value="All-rounder">All-rounder</MenuItem>
                 <MenuItem value="Batsman">Batsman</MenuItem>
