@@ -7,9 +7,17 @@ import {
   DialogTitle,
   FormControl,
   FormHelperText,
+  Grid,
   InputLabel,
   MenuItem,
+  Paper,
   Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   TextField,
   Typography,
 } from "@mui/material";
@@ -221,6 +229,13 @@ const Cricket = () => {
     handleClose();
   };
 
+  const rows = [
+    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
+    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
+    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
+    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+  ];
+
   return (
     <Box>
       <Box mb={4}>
@@ -232,7 +247,7 @@ const Cricket = () => {
           }}
         >
           <Typography component="h6" variant="h6" sx={{ fontWeight: "bold" }}>
-            Manage Cricket Match
+            Live Cricket Match
           </Typography>
           <Button variant="contained" onClick={handleClickOpen}>
             Add Cricket Match
@@ -345,7 +360,7 @@ const Cricket = () => {
               autoFocus
               margin="dense"
               id="date"
-              label="Date"
+              label="Date & Time"
               type="datetime-local"
               fullWidth
               variant="outlined"
@@ -1045,8 +1060,238 @@ const Cricket = () => {
           </DialogActions>
         </Dialog>
       </Box>
-      {/* render table components */}
-      {/* <NewsTable /> */}
+      {/* SCORECARD COMPONENTS */}
+      <Grid container spacing={2}>
+        <Grid item xs={6}>
+          <Paper sx={{ padding: "14px" }}>
+            <Typography
+              component="h6"
+              variant="h6"
+              sx={{
+                textAlign: "center",
+                fontWeight: "bold",
+                fontSize: "18px",
+                marginBottom: "12px",
+              }}
+            >
+              Bangladesh vs India
+            </Typography>
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>Total over:</b> 10
+            </Typography>
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>Toss status:</b> Bangladesh won the toss and elect to Bat
+            </Typography>
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>Venue:</b> Mirpur National Stadium
+            </Typography>
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>Date and Time:</b> June 10, 2023
+            </Typography>
+
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>Bangladesh:</b> Shakib Al Hasan, Tamim Iqbal, Mushfiqur Rahim,
+              Mashrafe Mortaza
+            </Typography>
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>India:</b> Shakib Al Hasan, Tamim Iqbal, Mushfiqur Rahim,
+              Mashrafe Mortaza
+            </Typography>
+
+            <Typography
+              component="h6"
+              variant="h6"
+              sx={{ fontWeight: "bold", marginTop: "20px" }}
+            >
+              Bangladesh 56/0 (8.2 overs)
+            </Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper sx={{ padding: "14px" }}>
+            {/* Select Batsman */}
+            <Typography
+              component="p"
+              variant="p"
+              sx={{ fontSize: "14px", fontWeight: "bold", marginBottom: "8px" }}
+            >
+              Select Batsman
+            </Typography>
+            <FormControl
+              size="small"
+              sx={{ width: "50%", paddingRight: "8px" }}
+            >
+              <InputLabel id="teamAPlayerType3">Strike</InputLabel>
+              <Select
+                labelId="teamAPlayerType3"
+                id="teamAPlayerType3"
+                label="Strike"
+                defaultValue=""
+                {...register("teamAPlayerType3")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl size="small" sx={{ width: "50%" }}>
+              <InputLabel id="teamAPlayerType3">Non-Strike</InputLabel>
+              <Select
+                labelId="teamAPlayerType3"
+                id="teamAPlayerType3"
+                label="Non-Strike"
+                defaultValue=""
+                {...register("teamAPlayerType3")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Select Bowler */}
+            <Typography
+              component="p"
+              variant="p"
+              sx={{
+                fontSize: "14px",
+                fontWeight: "bold",
+                marginBottom: "8px",
+                marginTop: "10px",
+              }}
+            >
+              Select Bowler
+            </Typography>
+            <FormControl size="small" fullWidth>
+              <InputLabel id="teamAPlayerType3">Bowler</InputLabel>
+              <Select
+                labelId="teamAPlayerType3"
+                id="teamAPlayerType3"
+                label="Bowler"
+                defaultValue=""
+                {...register("teamAPlayerType3")}
+              >
+                <MenuItem value="All-rounder">All-rounder</MenuItem>
+                <MenuItem value="Batsman">Batsman</MenuItem>
+                <MenuItem value="Bowler">Bowler</MenuItem>
+                <MenuItem value="Fielder">Fielder</MenuItem>
+                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* Ball by Ball Update */}
+            <Typography
+              component="p"
+              variant="p"
+              sx={{
+                fontSize: "14px",
+                fontWeight: "bold",
+                marginBottom: "12px",
+                marginTop: "12px",
+                textAlign: "center",
+              }}
+            >
+              Ball by Ball Update
+            </Typography>
+            <FormControl
+              size="small"
+              sx={{ width: "50%", paddingRight: "8px" }}
+            >
+              <InputLabel id="teamAPlayerType3">Run</InputLabel>
+              <Select
+                labelId="teamAPlayerType3"
+                id="teamAPlayerType3"
+                label="Run"
+                defaultValue="0"
+                {...register("teamAPlayerType3")}
+              >
+                <MenuItem value="0">0</MenuItem>
+                <MenuItem value="1">1</MenuItem>
+                <MenuItem value="2">2</MenuItem>
+                <MenuItem value="3">3</MenuItem>
+                <MenuItem value="4">4</MenuItem>
+                <MenuItem value="5">5</MenuItem>
+                <MenuItem value="6">6</MenuItem>
+                <MenuItem value="7">7</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl size="small" sx={{ width: "50%" }}>
+              <InputLabel id="teamAPlayerType3">
+                Select if the run is extra
+              </InputLabel>
+              <Select
+                labelId="teamAPlayerType3"
+                id="teamAPlayerType3"
+                label="Select if the run is extra"
+                defaultValue=""
+                {...register("teamAPlayerType3")}
+              >
+                <MenuItem value="Wide">Wide</MenuItem>
+                <MenuItem value="No ball">No ball</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl size="small" fullWidth sx={{ marginTop: "10px" }}>
+              <InputLabel id="teamAPlayerType3">
+                Select if the Batsman is out
+              </InputLabel>
+              <Select
+                labelId="teamAPlayerType3"
+                id="teamAPlayerType3"
+                label="Select if the Batsman is out"
+                defaultValue=""
+                {...register("teamAPlayerType3")}
+              >
+                <MenuItem value="Bowled">Bowled</MenuItem>
+                <MenuItem value="Catch out">Catch out</MenuItem>
+                <MenuItem value="Run out">Run out</MenuItem>
+                <MenuItem value="LBW">LBW</MenuItem>
+                <MenuItem value="Stumped">Stumped</MenuItem>
+                <MenuItem value="Hit wicket">Hit wicket</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* update score button */}
+            <Button
+              type="submit"
+              color="secondary"
+              variant="contained"
+              fullWidth
+              sx={{ marginTop: "10px" }}
+            >
+              Update Score
+            </Button>
+          </Paper>
+        </Grid>
+      </Grid>
+
+      {/* SCORECARD TABLE */}
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Index</TableCell>
+              <TableCell>Blog Title</TableCell>
+              <TableCell>Publish Date</TableCell>
+              <TableCell>Action</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id} sx={{}}>
+                <TableCell component="th" scope="row">
+                  {row.id}
+                </TableCell>
+                <TableCell>{row.firstName}</TableCell>
+                <TableCell>{row.lastName}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Box>
   );
 };
