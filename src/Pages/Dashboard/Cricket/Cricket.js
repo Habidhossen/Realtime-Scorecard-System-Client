@@ -229,13 +229,85 @@ const Cricket = () => {
     handleClose();
   };
 
-  const rows = [
-    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+  const battingRows = [
+    {
+      id: 1,
+      batsman: "Sakib al Hasan",
+      dm: "Not Out",
+      run: 35,
+      boundaries: 3,
+      overBoundaries: 2,
+      sr: 102.0,
+    },
+    {
+      id: 2,
+      batsman: "Mahmudullah Riyad",
+      dm: "Out",
+      run: 68,
+      boundaries: 6,
+      overBoundaries: 3,
+      sr: 122.5,
+    },
+    {
+      id: 3,
+      batsman: "Tamim Iqbal",
+      dm: "Not Out",
+      run: 112,
+      boundaries: 14,
+      overBoundaries: 5,
+      sr: 136.8,
+    },
+    {
+      id: 4,
+      batsman: "Mushfiqur Rahim",
+      dm: "Out",
+      run: 42,
+      boundaries: 4,
+      overBoundaries: 1,
+      sr: 110.3,
+    },
+    {
+      id: 5,
+      batsman: "Mustafizur Rahman",
+      dm: "Out",
+      run: 15,
+      boundaries: 1,
+      overBoundaries: 0,
+      sr: 83.3,
+    },
   ];
-
+  const bowlingRows = [
+    {
+      id: 1,
+      bowler: "Jasprit Bumrah",
+      over: 4,
+      run: 27,
+      wicket: 1,
+      noBall: 1,
+      wide: 2,
+      economy: 6.75,
+    },
+    {
+      id: 2,
+      bowler: "Ravindra Jadeja",
+      over: 5,
+      run: 18,
+      wicket: 2,
+      noBall: 0,
+      wide: 1,
+      economy: 3.6,
+    },
+    {
+      id: 3,
+      bowler: "Bhuvneshwar Kumar",
+      over: 5,
+      run: 24,
+      wicket: 3,
+      noBall: 0,
+      wide: 1,
+      economy: 4.8,
+    },
+  ];
   return (
     <Box>
       <Box mb={4}>
@@ -1061,9 +1133,9 @@ const Cricket = () => {
         </Dialog>
       </Box>
       {/* SCORECARD COMPONENTS */}
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ marginBottom: "20px" }}>
         <Grid item xs={6}>
-          <Paper sx={{ padding: "14px" }}>
+          <Paper sx={{ height: "370px", padding: "14px" }}>
             <Typography
               component="h6"
               variant="h6"
@@ -1090,11 +1162,11 @@ const Cricket = () => {
             </Typography>
 
             <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>Bangladesh:</b> Shakib Al Hasan, Tamim Iqbal, Mushfiqur Rahim,
-              Mashrafe Mortaza
+              <b>Bangladesh Squad:</b> Shakib Al Hasan, Tamim Iqbal, Mushfiqur
+              Rahim, Mashrafe Mortaza
             </Typography>
             <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>India:</b> Shakib Al Hasan, Tamim Iqbal, Mushfiqur Rahim,
+              <b>India Squad:</b> Shakib Al Hasan, Tamim Iqbal, Mushfiqur Rahim,
               Mashrafe Mortaza
             </Typography>
 
@@ -1108,7 +1180,7 @@ const Cricket = () => {
           </Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper sx={{ padding: "14px" }}>
+          <Paper sx={{ height: "370px", padding: "14px" }}>
             {/* Select Batsman */}
             <Typography
               component="p"
@@ -1260,7 +1332,7 @@ const Cricket = () => {
               color="secondary"
               variant="contained"
               fullWidth
-              sx={{ marginTop: "10px" }}
+              sx={{ marginTop: "20px" }}
             >
               Update Score
             </Button>
@@ -1268,25 +1340,82 @@ const Cricket = () => {
         </Grid>
       </Grid>
 
-      {/* SCORECARD TABLE */}
+      {/* SCORECARD TABLE (Batting Team) */}
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Typography
+          component="h6"
+          variant="h6"
+          sx={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: "16px",
+            marginY: "14px",
+          }}
+        >
+          Batting Scorecard
+        </Typography>
+        <Table sx={{ minWidth: 650 }}>
           <TableHead>
             <TableRow>
-              <TableCell>Index</TableCell>
-              <TableCell>Blog Title</TableCell>
-              <TableCell>Publish Date</TableCell>
-              <TableCell>Action</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Batsman</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>DM</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>R</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>4s</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>6s</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>SR</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {battingRows.map((row) => (
               <TableRow key={row.id} sx={{}}>
-                <TableCell component="th" scope="row">
-                  {row.id}
-                </TableCell>
-                <TableCell>{row.firstName}</TableCell>
-                <TableCell>{row.lastName}</TableCell>
+                <TableCell>{row.batsman}</TableCell>
+                <TableCell>{row.dm}</TableCell>
+                <TableCell>{row.run}</TableCell>
+                <TableCell>{row.boundaries}</TableCell>
+                <TableCell>{row.overBoundaries}</TableCell>
+                <TableCell>{row.sr}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      {/* SCORECARD TABLE (Bowling Team) */}
+      <TableContainer component={Paper} sx={{ marginTop: "16px" }}>
+        <Typography
+          component="h6"
+          variant="h6"
+          sx={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: "16px",
+            marginY: "14px",
+          }}
+        >
+          Bowling Scorecard
+        </Typography>
+        <Table sx={{ minWidth: 650 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{ fontWeight: "bold" }}>Bowler</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Over</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>R</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>W</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>NB</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>WD</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>ECO</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {bowlingRows.map((row) => (
+              <TableRow key={row.id} sx={{}}>
+                <TableCell>{row.bowler}</TableCell>
+                <TableCell>{row.over}</TableCell>
+                <TableCell>{row.run}</TableCell>
+                <TableCell>{row.wicket}</TableCell>
+                <TableCell>{row.noBall}</TableCell>
+                <TableCell>{row.wide}</TableCell>
+                <TableCell>{row.economy}</TableCell>
               </TableRow>
             ))}
           </TableBody>

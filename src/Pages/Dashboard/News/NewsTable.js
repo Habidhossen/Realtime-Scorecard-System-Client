@@ -11,11 +11,25 @@ import {
 } from "@mui/material";
 import React from "react";
 
-const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+const blogRows = [
+  {
+    id: 1,
+    blogTitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a elit in nisi varius placerat.",
+    publishDate: "20 May 2023",
+  },
+  {
+    id: 2,
+    blogTitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a elit in nisi varius placerat.",
+    publishDate: "24 May 2023",
+  },
+  {
+    id: 3,
+    blogTitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a elit in nisi varius placerat.",
+    publishDate: "26 May 2023",
+  },
 ];
 
 const NewsTable = () => {
@@ -24,24 +38,24 @@ const NewsTable = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Index</TableCell>
-            <TableCell>Blog Title</TableCell>
-            <TableCell>Publish Date</TableCell>
-            <TableCell>Action</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Index</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Blog Title</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Publish Date</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {blogRows.map((row) => (
             <TableRow key={row.id} sx={{}}>
               <TableCell component="th" scope="row">
                 {row.id}
               </TableCell>
-              <TableCell>{row.firstName}</TableCell>
-              <TableCell>{row.lastName}</TableCell>
+              <TableCell>{row.blogTitle}</TableCell>
+              <TableCell>{row.publishDate}</TableCell>
               <TableCell>
                 <Button
                   variant="outlined"
-                  color="secondary"
+                  color="error"
                   size="small"
                   startIcon={<DeleteIcon />}
                 >

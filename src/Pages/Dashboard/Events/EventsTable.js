@@ -12,11 +12,23 @@ import {
 import React from "react";
 
 const EventsTable = () => {
-  const rows = [
-    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+  const eventRows = [
+    {
+      id: 1,
+      eventName: "CSE Cricket Sports",
+      startDate: "1 June 2023",
+      endDate: "30 June 2023",
+      sports: "Cricket",
+      venue: "Bangabandhu Freedom Square",
+    },
+    {
+      id: 2,
+      eventName: "Pharmacy Cricket Sports",
+      startDate: "1 July 2023",
+      endDate: "30 July 2023",
+      sports: "Cricket",
+      venue: "Bangabandhu Freedom Square",
+    },
   ];
 
   return (
@@ -24,27 +36,30 @@ const EventsTable = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Index</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Start Date</TableCell>
-            <TableCell>End Date</TableCell>
-            <TableCell>Sports</TableCell>
-            <TableCell>Venue</TableCell>
-            <TableCell>Action</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Index</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Start Date</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>End Date</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Sports</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Venue</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {eventRows.map((row) => (
             <TableRow key={row.id} sx={{}}>
               <TableCell component="th" scope="row">
                 {row.id}
               </TableCell>
-              <TableCell>{row.firstName}</TableCell>
-              <TableCell>{row.lastName}</TableCell>
+              <TableCell>{row.eventName}</TableCell>
+              <TableCell>{row.startDate}</TableCell>
+              <TableCell>{row.endDate}</TableCell>
+              <TableCell>{row.sports}</TableCell>
+              <TableCell>{row.venue}</TableCell>
               <TableCell>
                 <Button
                   variant="outlined"
-                  color="secondary"
+                  color="error"
                   size="small"
                   startIcon={<DeleteIcon />}
                 >
