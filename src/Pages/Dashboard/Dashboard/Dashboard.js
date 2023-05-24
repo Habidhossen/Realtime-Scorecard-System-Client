@@ -9,7 +9,6 @@ import {
   NotesRounded,
   SmartDisplayRounded,
   SportsCricketRounded,
-  SportsSoccerRounded,
 } from "@mui/icons-material";
 import {
   Box,
@@ -188,7 +187,7 @@ const Dashboard = () => {
             <ListItemText primary="Cricket Match" />
           </ListItemButton>
 
-          <ListItemButton
+          {/* <ListItemButton
             component={Link}
             to="football"
             selected={"football" === selectedLink}
@@ -200,7 +199,7 @@ const Dashboard = () => {
               <SportsSoccerRounded />
             </ListItemIcon>
             <ListItemText primary="Football Match" />
-          </ListItemButton>
+          </ListItemButton> */}
 
           <ListItemButton
             component={Link}

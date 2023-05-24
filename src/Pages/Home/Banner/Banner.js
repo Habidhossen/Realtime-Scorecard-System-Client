@@ -1,18 +1,19 @@
-import { Box, Button, Typography } from "@mui/material";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import { Box, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const bannerStyles = {
     backgroundImage:
-      "url(https://preview.colorlib.com/theme/soccer/images/bg_3.jpg.webp)",
+      "url(https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
     backgroundPosition: "center",
     backgroundSize: "cover",
-    height: "calc(100vh - 64px)", // 64px is the height of the AppBar, adjust as needed
+    height: "100vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    marginTop: "64px",
   };
 
   const bannerTextStyles = {
@@ -22,10 +23,30 @@ const Banner = () => {
     margin: "0 auto",
   };
 
+  const bannerButton = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "6px",
+    backgroundColor: "transparent",
+    color: "white",
+    border: "white 1.5px solid",
+    borderRadius: "30px",
+    padding: "12px 28px",
+    textDecoration: "none",
+  };
+
   return (
     <Box style={bannerStyles}>
       <Box style={bannerTextStyles}>
-        <Typography variant="h1" component="h1" gutterBottom>
+        <Typography
+          component="h1"
+          variant="h1"
+          sx={{
+            // textAlign: "center",
+            fontWeight: "bold",
+            fontSize: "60px",
+          }}
+        >
           Get Live Sports and Updated
         </Typography>
         <Typography variant="subtitle1">
@@ -33,9 +54,9 @@ const Banner = () => {
           dignissimos tempora quis dicta exercitationem nihil ipsa impedit
           natus, aut nostrum.
         </Typography>
-        <Button variant="outlined" size="large" color="primary">
-          Watch Live
-        </Button>
+        <Link to="" style={bannerButton}>
+          <PlayCircleIcon /> Watch Live
+        </Link>
       </Box>
     </Box>
   );
