@@ -78,9 +78,16 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const Dashboard = () => {
+  // handle Side Drawer
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
+  };
+
+  // handle Active List Button
+  const [selectedLink, setSelectedLink] = useState("dashboard");
+  const setActive = (link) => {
+    setSelectedLink(link);
   };
 
   return (
@@ -139,42 +146,84 @@ const Dashboard = () => {
         {/* SIDE BAR */}
         <List component="nav">
           {/* Dashboard-List Routes */}
-          <ListItemButton component={Link} to="/dashboard">
+          <ListItemButton
+            component={Link}
+            to="/dashboard"
+            selected={"dashboard" === selectedLink}
+            onClick={() => {
+              setActive("dashboard");
+            }}
+          >
             <ListItemIcon>
               <GridViewRounded />
             </ListItemIcon>
             <ListItemText primary="Dashboard" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to="live-streaming">
+          <ListItemButton
+            component={Link}
+            to="live-streaming"
+            selected={"live-streaming" === selectedLink}
+            onClick={() => {
+              setActive("live-streaming");
+            }}
+          >
             <ListItemIcon>
               <SmartDisplayRounded />
             </ListItemIcon>
             <ListItemText primary="Live Streaming" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to="cricket">
+          <ListItemButton
+            component={Link}
+            to="cricket"
+            selected={"cricket" === selectedLink}
+            onClick={() => {
+              setActive("cricket");
+            }}
+          >
             <ListItemIcon>
               <SportsCricketRounded />
             </ListItemIcon>
             <ListItemText primary="Cricket Match" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to="football">
+          <ListItemButton
+            component={Link}
+            to="football"
+            selected={"football" === selectedLink}
+            onClick={() => {
+              setActive("football");
+            }}
+          >
             <ListItemIcon>
               <SportsSoccerRounded />
             </ListItemIcon>
             <ListItemText primary="Football Match" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to="news">
+          <ListItemButton
+            component={Link}
+            to="news"
+            selected={"news" === selectedLink}
+            onClick={() => {
+              setActive("news");
+            }}
+          >
             <ListItemIcon>
               <ArticleRounded />
             </ListItemIcon>
             <ListItemText primary="Sports News" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to="events">
+          <ListItemButton
+            component={Link}
+            to="events"
+            selected={"events" === selectedLink}
+            onClick={() => {
+              setActive("events");
+            }}
+          >
             <ListItemIcon>
               <EmojiEventsRounded />
             </ListItemIcon>
@@ -188,14 +237,28 @@ const Dashboard = () => {
             Others
           </ListSubheader>
 
-          <ListItemButton component={Link} to="account">
+          <ListItemButton
+            component={Link}
+            to="account"
+            selected={"account" === selectedLink}
+            onClick={() => {
+              setActive("account");
+            }}
+          >
             <ListItemIcon>
               <AccountCircleRounded />
             </ListItemIcon>
             <ListItemText primary="Account" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to="make-admin">
+          <ListItemButton
+            component={Link}
+            to="make-admin"
+            selected={"make-admin" === selectedLink}
+            onClick={() => {
+              setActive("make-admin");
+            }}
+          >
             <ListItemIcon>
               <AdminPanelSettingsRounded />
             </ListItemIcon>
