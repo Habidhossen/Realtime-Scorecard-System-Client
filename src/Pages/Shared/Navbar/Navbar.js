@@ -47,7 +47,11 @@ const Navbar = (props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+      <Typography
+        component="h6"
+        variant="h6"
+        sx={{ my: 2, fontSize: "16px", fontWeight: "bold" }}
+      >
         Scorecard
       </Typography>
       <Divider />
@@ -88,9 +92,15 @@ const Navbar = (props) => {
           </IconButton>
           <Typography
             variant="h6"
-            component="div"
-            color="primary"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            component={Link}
+            to="/"
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "block" },
+              fontSize: "20px",
+              fontWeight: "bold",
+              textDecoration: "none",
+            }}
           >
             Scorecard
           </Typography>
