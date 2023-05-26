@@ -1,40 +1,87 @@
-import { Box, Button, Chip, Container, Typography } from "@mui/material";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { Container, Paper, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CurrentMatch = () => {
+  // scorecard button
+  const scorecardButton = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "4px",
+    fontSize: "14px",
+    backgroundColor: "transparent",
+    color: "black",
+    border: "black 1.5px solid",
+    borderRadius: "30px",
+    padding: "8px 20px",
+    textDecoration: "none",
+  };
+
   return (
-    <Container
-      maxWidth="lg"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        marginY: "100px",
-      }}
-    >
-      <Typography variant="h6">Current Match</Typography>
-      <Box display="flex" flexDirection="column" alignItems="center">
-        <Box display="flex" alignItems="center" my={3}>
-          <Typography variant="h4">Team A</Typography>
-          <Chip
-            label="VS"
-            color="secondary"
-            size="small"
-            sx={{ marginX: "20px" }}
-          />
-          <Typography variant="h4">Team B</Typography>
-        </Box>
-        <Box textAlign="center">
-          <Typography variant="body1">CSE Sports</Typography>
-          <Typography variant="body1">1 Jan 2024, 7:00 PM</Typography>
-          <Typography variant="body1">XYZ Stadium</Typography>
-        </Box>
-        <Box my={3}>
-          <Button variant="contained" color="secondary">
-            More Info
-          </Button>
-        </Box>
-      </Box>
+    <Container maxWidth="lg" sx={{ marginTop: "70px" }}>
+      <Typography
+        component="h6"
+        variant="h6"
+        sx={{
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: "26px",
+          marginY: "20px",
+        }}
+      >
+        Live Cricket Matches
+      </Typography>
+      <Paper
+        elevation={0}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "8px",
+          paddingY: "50px",
+        }}
+      >
+        <Typography
+          component="h6"
+          variant="h6"
+          sx={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: "18px",
+            marginBottom: "4px",
+          }}
+        >
+          Bangladesh vs India
+        </Typography>
+        <Typography
+          component="p"
+          variant="p"
+          sx={{
+            textAlign: "center",
+            fontSize: "14px",
+            marginBottom: "14px",
+          }}
+        >
+          Bangladesh won the toss and elect Bat
+        </Typography>
+        <Typography
+          component="h6"
+          variant="h6"
+          sx={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: "22px",
+            marginBottom: "20px",
+          }}
+        >
+          Bangladesh 56/0 (8.2 overs)
+        </Typography>
+        <Link to="" style={scorecardButton}>
+          Scorecard & more info <KeyboardArrowRightIcon />
+        </Link>
+      </Paper>
     </Container>
   );
 };
