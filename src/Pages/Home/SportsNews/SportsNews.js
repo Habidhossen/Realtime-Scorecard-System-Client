@@ -46,7 +46,7 @@ const SportsNews = () => {
         sx={{
           textAlign: "center",
           fontWeight: "bold",
-          fontSize: "26px",
+          fontSize: "24px",
           marginY: "20px",
         }}
       >
@@ -76,7 +76,7 @@ const SportsNews = () => {
             textTransform: "capitalize",
           }}
           component={Link}
-          to="/"
+          to="all-sports-news"
           size="small"
           color="primary"
         >

@@ -1,22 +1,20 @@
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { Box, Button, Container, Paper, Typography } from "@mui/material";
+import { Container, Paper, Typography } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
 
-const SportsEvents = () => {
+const AllSportsEvents = () => {
   return (
-    <Container maxWidth="lg" sx={{ marginTop: "70px" }}>
+    <Container maxWidth="lg" sx={{ marginx: "0px" }}>
       <Typography
         component="h6"
         variant="h6"
         sx={{
           textAlign: "center",
           fontWeight: "bold",
-          fontSize: "24px",
+          fontSize: "26px",
           marginY: "20px",
         }}
       >
-        Upcoming Sport Events
+        ALl Sport Events
       </Typography>
       <Paper
         sx={{
@@ -61,27 +59,8 @@ const SportsEvents = () => {
           Venue: Bangabandhu Freedom Square
         </Typography>
       </Paper>
-
-      {/* footer button */}
-      <Box
-        sx={{ display: "flex", justifyContent: "flex-end", marginTop: "10px" }}
-      >
-        <Button
-          sx={{
-            fontWeight: "bold",
-            fontSize: "15px",
-            textTransform: "capitalize",
-          }}
-          component={Link}
-          to="all-sports-events"
-          size="small"
-          color="primary"
-        >
-          See more Events <ArrowRightAltIcon />
-        </Button>
-      </Box>
     </Container>
   );
 };
 
-export default SportsEvents;
+export default AllSportsEvents;

@@ -9,10 +9,14 @@ import Football from "../../pages/Dashboard/Football/Football";
 import LiveStreaming from "../../pages/Dashboard/LiveStreaming/LiveStreaming";
 import MakeAdmin from "../../pages/Dashboard/MakeAdmin/MakeAdmin";
 import News from "../../pages/Dashboard/News/News";
+import AboutPage from "../../pages/Home/AboutPage/AboutPage";
+import AllSportsEvents from "../../pages/Home/AllSportsEvents/AllSportsEvents";
+import AllSportsNews from "../../pages/Home/AllSportsNews/AllSportsNews";
 import Home from "../../pages/Home/Home/Home";
+import MatchSchedule from "../../pages/Home/MatchSchedule/MatchSchedule";
+import WatchLiveMatch from "../../pages/Home/WatchLiveMatch/WatchLiveMatch";
 import Login from "../../pages/Login/Login";
 import DisplayError from "../../pages/Shared/DisplayError/DisplayError";
-import Signup from "../../pages/Signup/Signup";
 
 const router = createBrowserRouter([
   {
@@ -29,8 +33,24 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/signup",
-        element: <Signup />,
+        path: "/all-sports-news",
+        element: <AllSportsNews />,
+      },
+      {
+        path: "/live-match",
+        element: <WatchLiveMatch />,
+      },
+      {
+        path: "/all-sports-events",
+        element: <AllSportsEvents />,
+      },
+      {
+        path: "/match-schedule",
+        element: <MatchSchedule />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
       },
     ],
   },

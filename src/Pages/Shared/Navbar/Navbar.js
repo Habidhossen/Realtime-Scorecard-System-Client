@@ -21,15 +21,19 @@ const navItems = [
   },
   {
     name: "Watch Live",
-    href: "live",
+    href: "live-match",
   },
   {
     name: "Match Schedule",
-    href: "schedule",
+    href: "match-schedule",
   },
   {
     name: "Sports News",
-    href: "blogs",
+    href: "all-sports-news",
+  },
+  {
+    name: "Sports Events",
+    href: "all-sports-events",
   },
   {
     name: "About",
@@ -99,6 +103,7 @@ const Navbar = (props) => {
               display: { xs: "none", sm: "block" },
               fontSize: "20px",
               fontWeight: "bold",
+              color: "#000000",
               textDecoration: "none",
             }}
           >

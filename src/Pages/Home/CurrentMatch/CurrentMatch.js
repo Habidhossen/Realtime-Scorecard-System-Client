@@ -1,4 +1,3 @@
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { Container, Paper, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -26,7 +25,7 @@ const CurrentMatch = () => {
         sx={{
           textAlign: "center",
           fontWeight: "bold",
-          fontSize: "26px",
+          fontSize: "24px",
           marginY: "20px",
         }}
       >
@@ -73,13 +72,13 @@ const CurrentMatch = () => {
             textAlign: "center",
             fontWeight: "bold",
             fontSize: "22px",
-            marginBottom: "20px",
+            marginBottom: "40px",
           }}
         >
           Bangladesh 56/0 (8.2 overs)
         </Typography>
         <Link to="" style={scorecardButton}>
-          Scorecard & more info <KeyboardArrowRightIcon />
+          Scorecard & more info
         </Link>
       </Paper>
     </Container>
