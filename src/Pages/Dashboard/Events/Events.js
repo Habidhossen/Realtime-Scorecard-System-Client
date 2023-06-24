@@ -40,7 +40,47 @@ const Events = () => {
 
   // handle form data
   const onSubmit = (data) => {
-    console.log(data);
+    // formatted startDate and endDate (2023-06-26 to 26 June 2023)
+    const formattedStartDate = new Date(data.startDate).toLocaleDateString(
+      "en-US",
+      {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }
+    );
+    const formattedEndDate = new Date(data.endDate).toLocaleDateString(
+      "en-US",
+      {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }
+    );
+    // make a new formatted object
+    const eventData = {
+      eventName: data.name,
+      sportType: data.sport,
+      venue: data.venue,
+      desc: data.desc,
+      startDate: formattedStartDate,
+      endDate: formattedEndDate,
+    };
+    // send data to the server
+    fetch("http://localhost:5000/api/v1/event", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(eventData),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+    // toast.success("Event added successfully", {
+    //   theme: "colored",
+    //   autoClose: 3000,
+    // });
+    reset();
     handleClose();
   };
 

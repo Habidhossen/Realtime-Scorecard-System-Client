@@ -10,26 +10,39 @@ import {
   TableRow,
 } from "@mui/material";
 import React from "react";
+import { useQuery } from "react-query";
+import Loader from "../../Shared/Loader/Loader";
 
 const EventsTable = () => {
-  const eventRows = [
-    {
-      id: 1,
-      eventName: "CSE Cricket Sports",
-      startDate: "1 June 2023",
-      endDate: "30 June 2023",
-      sports: "Cricket",
-      venue: "Bangabandhu Freedom Square",
-    },
-    {
-      id: 2,
-      eventName: "Pharmacy Cricket Sports",
-      startDate: "1 July 2023",
-      endDate: "30 July 2023",
-      sports: "Cricket",
-      venue: "Bangabandhu Freedom Square",
-    },
-  ];
+  // fetch data from database by react query
+  const { data: events, isLoading, refetch } = useQuery("event", () =>
+    fetch("http://localhost:5000/api/v1/event").then((res) => res.json())
+  );
+
+  // loading
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  // handle service delete button
+  const handleDeleteBtn = (id) => {
+    const confirm = window.confirm("Are you sure you want to Delete?");
+
+    if (confirm) {
+      fetch(`http://localhost:5000/api/v1/event/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === "success") {
+            // toast.success("Event deleted successfully", {
+            //   autoClose: 3000,
+            // });
+            refetch();
+          }
+        });
+    }
+  };
 
   return (
     <TableContainer component={Paper}>
@@ -46,18 +59,19 @@ const EventsTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {eventRows.map((row) => (
-            <TableRow key={row.id} sx={{}}>
+          {events.data.map((row, index) => (
+            <TableRow key={row._id} sx={{}}>
               <TableCell component="th" scope="row">
-                {row.id}
+                {index + 1}
               </TableCell>
               <TableCell>{row.eventName}</TableCell>
               <TableCell>{row.startDate}</TableCell>
               <TableCell>{row.endDate}</TableCell>
-              <TableCell>{row.sports}</TableCell>
+              <TableCell>{row.sportType}</TableCell>
               <TableCell>{row.venue}</TableCell>
               <TableCell>
                 <Button
+                  onClick={() => handleDeleteBtn(row._id)}
                   variant="outlined"
                   color="error"
                   size="small"
