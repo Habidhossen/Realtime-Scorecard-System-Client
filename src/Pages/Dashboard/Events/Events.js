@@ -57,7 +57,7 @@ const Events = () => {
         year: "numeric",
       }
     );
-    // make a new formatted object
+    // create a new formatted object
     const eventData = {
       eventName: data.name,
       sportType: data.sport,

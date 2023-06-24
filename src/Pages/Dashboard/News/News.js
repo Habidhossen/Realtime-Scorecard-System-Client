@@ -1,4 +1,3 @@
-import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import {
   Box,
   Button,
@@ -36,7 +35,39 @@ const News = () => {
 
   // handle form data
   const onSubmit = (data) => {
-    console.log(data);
+    // get formatted current date
+    const currentDate = new Date().toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+    // Check if the user provided a value for 'coverImgLink'
+    if (!data.coverImgLink) {
+      data.coverImgLink = "https://i.ibb.co/V9K4RPC/sport-news-cover.png"; // If 'coverImgLink' is not provided, set the default value
+    }
+    // create a new formatted object
+    const newsData = {
+      newsTitle: data.title,
+      coverImgLink: data.coverImgLink,
+      content: data.content,
+      publishDate: currentDate,
+    };
+
+    // send data to the server
+    fetch("http://localhost:5000/api/v1/news", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(newsData),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+    // toast.success("Event added successfully", {
+    //   theme: "colored",
+    //   autoClose: 3000,
+    // });
+    reset();
     handleClose();
   };
 
@@ -63,7 +94,7 @@ const News = () => {
           component="form"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <DialogTitle>Create a new blog post</DialogTitle>
+          <DialogTitle>Create a new sport news</DialogTitle>
           <DialogContent>
             <TextField
               autoFocus
@@ -76,7 +107,18 @@ const News = () => {
               size="small"
               {...register("title", { required: true })}
               error={errors.title}
-              helperText={errors.title && "Blog title is required"}
+              helperText={errors.title && "News title is required"}
+            />
+            <TextField
+              autoFocus
+              margin="dense"
+              id="coverImgLink"
+              label="Cover Image Link"
+              type="text"
+              fullWidth
+              variant="outlined"
+              size="small"
+              {...register("coverImgLink")}
             />
             <TextField
               autoFocus
@@ -91,9 +133,9 @@ const News = () => {
               size="small"
               {...register("content", { required: true })}
               error={errors.content}
-              helperText={errors.content && "Blog content is required"}
+              helperText={errors.content && "News content is required"}
             />
-            <Button
+            {/* <Button
               sx={{ marginTop: "10px" }}
               variant="outlined"
               component="label"
@@ -101,7 +143,7 @@ const News = () => {
             >
               Upload Cover Image
               <input hidden accept="image/*" multiple type="file" />
-            </Button>
+            </Button> */}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>

@@ -10,29 +10,40 @@ import {
   TableRow,
 } from "@mui/material";
 import React from "react";
-
-const blogRows = [
-  {
-    id: 1,
-    blogTitle:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a elit in nisi varius placerat.",
-    publishDate: "20 May 2023",
-  },
-  {
-    id: 2,
-    blogTitle:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a elit in nisi varius placerat.",
-    publishDate: "24 May 2023",
-  },
-  {
-    id: 3,
-    blogTitle:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a elit in nisi varius placerat.",
-    publishDate: "26 May 2023",
-  },
-];
+import { useQuery } from "react-query";
+import Loader from "../../Shared/Loader/Loader";
 
 const NewsTable = () => {
+  // fetch data from database by react query
+  const { data: news, isLoading, refetch } = useQuery("news", () =>
+    fetch("http://localhost:5000/api/v1/news").then((res) => res.json())
+  );
+
+  // loading
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  // handle service delete button
+  const handleDeleteBtn = (id) => {
+    const confirm = window.confirm("Are you sure you want to Delete?");
+
+    if (confirm) {
+      fetch(`http://localhost:5000/api/v1/news/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === "success") {
+            // toast.success("Event deleted successfully", {
+            //   autoClose: 3000,
+            // });
+            refetch();
+          }
+        });
+    }
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -40,20 +51,23 @@ const NewsTable = () => {
           <TableRow>
             <TableCell sx={{ fontWeight: "bold" }}>Index</TableCell>
             <TableCell sx={{ fontWeight: "bold" }}>Blog Title</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>Content</TableCell>
             <TableCell sx={{ fontWeight: "bold" }}>Publish Date</TableCell>
             <TableCell sx={{ fontWeight: "bold" }}>Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {blogRows.map((row) => (
+          {news.data.map((row, index) => (
             <TableRow key={row.id} sx={{}}>
               <TableCell component="th" scope="row">
-                {row.id}
+                {index + 1}
               </TableCell>
-              <TableCell>{row.blogTitle}</TableCell>
+              <TableCell>{row.newsTitle}</TableCell>
+              <TableCell>{row.content.substring(0, 30) + " ..."}</TableCell>
               <TableCell>{row.publishDate}</TableCell>
               <TableCell>
                 <Button
+                  onClick={() => handleDeleteBtn(row._id)}
                   variant="outlined"
                   color="error"
                   size="small"
