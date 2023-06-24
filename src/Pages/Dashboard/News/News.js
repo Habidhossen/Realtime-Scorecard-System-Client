@@ -82,7 +82,7 @@ const News = () => {
           }}
         >
           <Typography component="h6" variant="h6" sx={{ fontWeight: "bold" }}>
-            Manage Sport Blogs
+            Manage Sport News
           </Typography>
           <Button variant="contained" onClick={handleClickOpen}>
             Add New blog

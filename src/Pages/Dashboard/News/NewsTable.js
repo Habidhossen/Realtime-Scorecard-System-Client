@@ -50,7 +50,7 @@ const NewsTable = () => {
         <TableHead>
           <TableRow>
             <TableCell sx={{ fontWeight: "bold" }}>Index</TableCell>
-            <TableCell sx={{ fontWeight: "bold" }}>Blog Title</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }}>News Title</TableCell>
             <TableCell sx={{ fontWeight: "bold" }}>Content</TableCell>
             <TableCell sx={{ fontWeight: "bold" }}>Publish Date</TableCell>
             <TableCell sx={{ fontWeight: "bold" }}>Action</TableCell>

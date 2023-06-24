@@ -45,186 +45,375 @@ const Cricket = () => {
     reset,
   } = useForm();
 
-  // handle form data
   const onSubmit = (data) => {
-    const newMatchData = {
-      teamNameA: data.teamA,
-      teamNameB: data.teamB,
-      tossWinner: data.tossWinner === "teamA" ? data.teamA : data.teamB,
+    // formatted Date and Time
+    const formattedDateTime = new Date(data.date).toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    });
+    // create a modified MatchData object
+    const matchData = {
+      name: `${data.teamA} vs ${data.teamB} Cricket Match`,
       tossChoice: data.tossChoice,
+      tossWinner: data.tossWinner === "teamA" ? data.teamA : data.teamB,
       totalOver: data.totalOver,
       venue: data.venue,
-      date: data.date,
-      teamInfoA: {
+      date: formattedDateTime,
+      status: "", // Replace with the actual result
+      matchWinner: "", // Replace with the actual match winner
+      team1: {
+        name: data.teamA,
         captain: {
           name: data.teamACaptainName,
           type: data.teamACaptainType,
         },
-        player1: {
-          name: data.teamAPlayerName1,
-          type: data.teamAPlayerType1,
-        },
-        player2: {
-          name: data.teamAPlayerName2,
-          type: data.teamAPlayerType2,
-        },
-        player3: {
-          name: data.teamAPlayerName3,
-          type: data.teamAPlayerType3,
-        },
-        player4: {
-          name: data.teamAPlayerName4,
-          type: data.teamAPlayerType4,
-        },
-        player5: {
-          name: data.teamAPlayerName5,
-          type: data.teamAPlayerType5,
-        },
-        player6: {
-          name: data.teamAPlayerName6,
-          type: data.teamAPlayerType6,
-        },
-        player7: {
-          name: data.teamAPlayerName7,
-          type: data.teamAPlayerType7,
-        },
-        player8: {
-          name: data.teamAPlayerName8,
-          type: data.teamAPlayerType8,
-        },
-        player9: {
-          name: data.teamAPlayerName9,
-          type: data.teamAPlayerType9,
-        },
-        player10: {
-          name: data.teamAPlayerName10,
-          type: data.teamAPlayerType10,
-        },
+        players: [
+          {
+            name: data.teamACaptainName,
+            type: data.teamACaptainType,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamAPlayerName1,
+            type: data.teamAPlayerType1,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamAPlayerName2,
+            type: data.teamAPlayerType2,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamAPlayerName3,
+            type: data.teamAPlayerType3,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamAPlayerName4,
+            type: data.teamAPlayerType4,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamAPlayerName5,
+            type: data.teamAPlayerType5,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamAPlayerName6,
+            type: data.teamAPlayerType6,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamAPlayerName7,
+            type: data.teamAPlayerType7,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamAPlayerName8,
+            type: data.teamAPlayerType8,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamAPlayerName9,
+            type: data.teamAPlayerType9,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamAPlayerName10,
+            type: data.teamAPlayerType10,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+        ],
+        overs: 0,
+        wickets: 0,
+        runs: 0,
       },
-      teamInfoB: {
+      team2: {
+        name: data.teamB,
         captain: {
           name: data.teamBCaptainName,
           type: data.teamBCaptainType,
         },
-        player1: {
-          name: data.teamBPlayerName1,
-          type: data.teamBPlayerType1,
-        },
-        player2: {
-          name: data.teamBPlayerName2,
-          type: data.teamBPlayerType2,
-        },
-        player3: {
-          name: data.teamBPlayerName3,
-          type: data.teamBPlayerType3,
-        },
-        player4: {
-          name: data.teamBPlayerName4,
-          type: data.teamBPlayerType4,
-        },
-        player5: {
-          name: data.teamBPlayerName5,
-          type: data.teamBPlayerType5,
-        },
-        player6: {
-          name: data.teamBPlayerName6,
-          type: data.teamBPlayerType6,
-        },
-        player7: {
-          name: data.teamBPlayerName7,
-          type: data.teamBPlayerType7,
-        },
-        player8: {
-          name: data.teamBPlayerName8,
-          type: data.teamBPlayerType8,
-        },
-        player9: {
-          name: data.teamBPlayerName9,
-          type: data.teamBPlayerType9,
-        },
-        player10: {
-          name: data.teamBPlayerName10,
-          type: data.teamBPlayerType10,
-        },
+        players: [
+          {
+            name: data.teamBCaptainName,
+            type: data.teamBCaptainType,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamBPlayerName1,
+            type: data.teamBPlayerType1,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamBPlayerName2,
+            type: data.teamBPlayerType2,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamBPlayerName3,
+            type: data.teamBPlayerType3,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamBPlayerName4,
+            type: data.teamBPlayerType4,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamBPlayerName5,
+            type: data.teamBPlayerType5,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamBPlayerName6,
+            type: data.teamBPlayerType6,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamBPlayerName7,
+            type: data.teamBPlayerType7,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamBPlayerName8,
+            type: data.teamBPlayerType8,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamBPlayerName9,
+            type: data.teamBPlayerType9,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+          {
+            name: data.teamBPlayerName10,
+            type: data.teamBPlayerType10,
+            runsScored: 0,
+            ballsFaced: 0,
+            fours: 0,
+            sixes: 0,
+            dismissals: "",
+            wicketsTaken: 0,
+            oversBowled: 0,
+            runsConceded: 0,
+            economyRate: 0,
+            strikeRate: 0,
+          },
+        ],
+        overs: 0,
+        wickets: 0,
+        runs: 0,
       },
     };
+    console.log(matchData);
 
-    /* Sample Output: 
-    {
-  teamNameA: "BD",
-  teamNameB: "IND",
-  tossChoice: "Bat",
-  tossWinner: "BD",
-  totalOver: "10",
-  venue: "Dhaka",
-  date: "2023-05-04",
-  teamInfoA: {
-    captain: {
-      name: "Sakib Al Hasan",
-      type: "All-rounder",
-    },
-    player1: {
-      name: "",
-      type: "",
-    },
-    player2: {
-      name: "",
-      type: "",
-    },
-    player3: {
-      name: "",
-      type: "",
-    },
-    player4: {
-      name: "",
-      type: "",
-    },
-    player5: {
-      name: "",
-      type: "",
-    }
-  },
-  teamInfoB: {
-    captain: {
-      name: "Sakib Al Hasan",
-      type: "All-rounder",
-    },
-    player1: {
-      name: "",
-      type: "",
-    },
-    player2: {
-      name: "",
-      type: "",
-    },
-    player3: {
-      name: "",
-      type: "",
-    },
-    player4: {
-      name: "",
-      type: "",
-    },
-    player5: {
-      name: "",
-      type: "",
-    }
-  }
-}
-    */
-    /* 
-    Convert Date-time to Local Date and Time -->
-    const input = "2023-05-04T15:00";
-    const date = new Date(input);
-    const formattedDate = date.toLocaleDateString("en-US");
-    const formattedTime = date.toLocaleTimeString("en-US");
-    console.log(formattedDate); // Output: "5/4/2023"
-    console.log(formattedTime); // Output: "3:00:00 PM" */
-
-    console.log(newMatchData);
-    // console.log(
-    //   `${newMatchData.tossWinner} won the toss and elected to ${newMatchData.tossChoice} first`
-    // );
+    // send data to the server
+    fetch("http://localhost:5000/api/v1/cricket-match", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(matchData),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+    // toast.success("Event added successfully", {
+    //   theme: "colored",
+    //   autoClose: 3000,
+    // });
+    reset();
 
     handleClose();
   };
