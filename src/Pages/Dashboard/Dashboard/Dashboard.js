@@ -185,7 +185,21 @@ const Dashboard = () => {
             <ListItemIcon>
               <SportsCricketRounded />
             </ListItemIcon>
-            <ListItemText primary="Cricket Match" />
+            <ListItemText primary="Live Cricket Match" />
+          </ListItemButton>
+
+          <ListItemButton
+            component={Link}
+            to="manage-cricket-match"
+            selected={"manage-cricket-match" === selectedLink}
+            onClick={() => {
+              setActive("manage-cricket-match");
+            }}
+          >
+            <ListItemIcon>
+              <SportsCricketRounded />
+            </ListItemIcon>
+            <ListItemText primary="Manage Cricket Match" />
           </ListItemButton>
 
           {/* <ListItemButton

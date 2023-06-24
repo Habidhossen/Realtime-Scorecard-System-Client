@@ -8,6 +8,7 @@ import Events from "../../pages/Dashboard/Events/Events";
 import Football from "../../pages/Dashboard/Football/Football";
 import LiveStreaming from "../../pages/Dashboard/LiveStreaming/LiveStreaming";
 import MakeAdmin from "../../pages/Dashboard/MakeAdmin/MakeAdmin";
+import ManageCricketMatch from "../../pages/Dashboard/ManageCricketMatch/ManageCricketMatch";
 import News from "../../pages/Dashboard/News/News";
 import AboutPage from "../../pages/Home/AboutPage/AboutPage";
 import AllSportsEvents from "../../pages/Home/AllSportsEvents/AllSportsEvents";
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/cricket",
         element: <Cricket />,
+      },
+      {
+        path: "/dashboard/manage-cricket-match",
+        element: <ManageCricketMatch />,
       },
       {
         path: "/dashboard/football",

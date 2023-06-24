@@ -62,7 +62,7 @@ const Cricket = () => {
       totalOver: data.totalOver,
       venue: data.venue,
       date: formattedDateTime,
-      status: "", // Replace with the actual result
+      status: "In Progress", // Replace with the actual result
       matchWinner: "", // Replace with the actual match winner
       team1: {
         name: data.teamA,

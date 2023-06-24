@@ -58,7 +58,7 @@ const NewsTable = () => {
         </TableHead>
         <TableBody>
           {news.data.map((row, index) => (
-            <TableRow key={row.id} sx={{}}>
+            <TableRow key={row._id} sx={{}}>
               <TableCell component="th" scope="row">
                 {index + 1}
               </TableCell>
