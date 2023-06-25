@@ -1418,7 +1418,7 @@ const Cricket = () => {
               variant="h6"
               sx={{ fontWeight: "bold", marginTop: "20px" }}
             >
-              {battingTeam.name} 56/0 (8.2 overs)
+              {battingTeam.name} {battingTeam.runs}/{battingTeam.wickets} (8.2 overs)
             </Typography>
           </Paper>
         </Grid>
@@ -1459,7 +1459,7 @@ const Cricket = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {team1.players.map((row) => (
+            {battingTeam.players.map((row) => (
               <TableRow key={row._id} sx={{}}>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{row.dismissals}</TableCell>
@@ -1501,14 +1501,14 @@ const Cricket = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {team1.players.map((row) => (
+            {bowlingTeam.players.map((row) => (
               <TableRow key={row._id} sx={{}}>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{row.oversBowled}</TableCell>
                 <TableCell>{row.runsConceded}</TableCell>
                 <TableCell>{row.wicketsTaken}</TableCell>
-                <TableCell>{row.noBall}</TableCell>
-                <TableCell>{row.wide}</TableCell>
+                <TableCell>{row.noBalls}</TableCell>
+                <TableCell>{row.wideBalls}</TableCell>
                 <TableCell>{row.economyRate}</TableCell>
               </TableRow>
             ))}

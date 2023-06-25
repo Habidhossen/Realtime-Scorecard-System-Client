@@ -166,11 +166,11 @@ const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
           defaultValue=""
           {...register("extraRunType")}
         >
-          <MenuItem value="">
+          <MenuItem value={0}>
             <em>None</em>
           </MenuItem>
           <MenuItem value="Wide">Wide</MenuItem>
-          <MenuItem value="No ball">No ball</MenuItem>
+          <MenuItem value="No Ball">No Ball</MenuItem>
         </Select>
       </FormControl>
       <FormControl size="small" fullWidth sx={{ marginTop: "10px" }}>
@@ -182,7 +182,7 @@ const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
           defaultValue="Not Out"
           {...register("outType")}
         >
-          <MenuItem value="">
+          <MenuItem value="Not Out">
             <em>None</em>
           </MenuItem>
           <MenuItem value="Bowled">Bowled</MenuItem>
