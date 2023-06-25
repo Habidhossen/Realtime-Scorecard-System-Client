@@ -23,6 +23,9 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useQuery } from "react-query";
+import Loader from "../../Shared/Loader/Loader";
+import UpdateScoreForm from "./UpdateScoreForm";
 
 const Cricket = () => {
   // modal state
@@ -96,12 +99,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamAPlayerName1,
@@ -110,12 +115,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamAPlayerName2,
@@ -124,12 +131,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamAPlayerName3,
@@ -138,12 +147,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamAPlayerName4,
@@ -152,12 +163,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamAPlayerName5,
@@ -166,12 +179,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamAPlayerName6,
@@ -180,12 +195,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamAPlayerName7,
@@ -194,12 +211,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamAPlayerName8,
@@ -208,12 +227,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamAPlayerName9,
@@ -222,12 +243,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamAPlayerName10,
@@ -236,12 +259,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
     ];
     // team B player object declare
@@ -253,12 +278,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamBPlayerName1,
@@ -267,12 +294,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamBPlayerName2,
@@ -281,12 +310,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamBPlayerName3,
@@ -295,12 +326,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamBPlayerName4,
@@ -309,12 +342,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamBPlayerName5,
@@ -323,12 +358,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamBPlayerName6,
@@ -337,12 +374,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamBPlayerName7,
@@ -351,12 +390,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamBPlayerName8,
@@ -365,12 +406,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
       {
         name: data.teamBPlayerName9,
@@ -379,11 +422,13 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
         strikeRate: 0,
       },
       {
@@ -393,12 +438,14 @@ const Cricket = () => {
         ballsFaced: 0,
         fours: 0,
         sixes: 0,
-        dismissals: "",
+        dismissals: "Not Out",
         wicketsTaken: 0,
         oversBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
+        wideBalls: 0,
+        noBalls: 0,
       },
     ];
     // if data field is empty player will not add in array
@@ -432,85 +479,55 @@ const Cricket = () => {
     handleClose();
   };
 
-  const battingRows = [
-    {
-      id: 1,
-      batsman: "Sakib al Hasan",
-      dm: "Not Out",
-      run: 35,
-      boundaries: 3,
-      overBoundaries: 2,
-      sr: 102.0,
-    },
-    {
-      id: 2,
-      batsman: "Mahmudullah Riyad",
-      dm: "Out",
-      run: 68,
-      boundaries: 6,
-      overBoundaries: 3,
-      sr: 122.5,
-    },
-    {
-      id: 3,
-      batsman: "Tamim Iqbal",
-      dm: "Not Out",
-      run: 112,
-      boundaries: 14,
-      overBoundaries: 5,
-      sr: 136.8,
-    },
-    {
-      id: 4,
-      batsman: "Mushfiqur Rahim",
-      dm: "Out",
-      run: 42,
-      boundaries: 4,
-      overBoundaries: 1,
-      sr: 110.3,
-    },
-    {
-      id: 5,
-      batsman: "Mustafizur Rahman",
-      dm: "Out",
-      run: 15,
-      boundaries: 1,
-      overBoundaries: 0,
-      sr: 83.3,
-    },
-  ];
-  const bowlingRows = [
-    {
-      id: 1,
-      bowler: "Jasprit Bumrah",
-      over: 4,
-      run: 27,
-      wicket: 1,
-      noBall: 1,
-      wide: 2,
-      economy: 6.75,
-    },
-    {
-      id: 2,
-      bowler: "Ravindra Jadeja",
-      over: 5,
-      run: 18,
-      wicket: 2,
-      noBall: 0,
-      wide: 1,
-      economy: 3.6,
-    },
-    {
-      id: 3,
-      bowler: "Bhuvneshwar Kumar",
-      over: 5,
-      run: 24,
-      wicket: 3,
-      noBall: 0,
-      wide: 1,
-      economy: 4.8,
-    },
-  ];
+  // fetch data from database by react query
+  const {
+    data: currentCricketMatches,
+    isLoading,
+    refetch,
+  } = useQuery("currentCricketMatch", () =>
+    fetch("http://localhost:5000/api/v1/latest-cricket-match").then((res) =>
+      res.json()
+    )
+  );
+
+  // loading
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  // destructuring Match Value
+  const {
+    _id,
+    name,
+    tossChoice,
+    tossWinner,
+    totalOver,
+    venue,
+    date,
+    status,
+    matchWinner,
+    team1,
+    team2,
+  } = currentCricketMatches.data[0];
+
+  // get Batting Team Name
+  const battingTeamName =
+    tossChoice === "bat"
+      ? tossWinner
+      : tossWinner === team1.name
+      ? team2.name
+      : team1.name;
+
+  // set Batting and Bowling Team data
+  let battingTeam, bowlingTeam;
+  if (battingTeamName === team1.name) {
+    battingTeam = team1;
+    bowlingTeam = team2;
+  } else {
+    battingTeam = team2;
+    bowlingTeam = team1;
+  }
+
   return (
     <Box>
       <Box mb={4}>
@@ -1349,28 +1366,51 @@ const Cricket = () => {
                 marginBottom: "12px",
               }}
             >
-              Bangladesh vs India
+              {name}
             </Typography>
             <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>Total over:</b> 10
-            </Typography>
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>Toss status:</b> Bangladesh won the toss and elect to Bat
-            </Typography>
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>Venue:</b> Mirpur National Stadium
-            </Typography>
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>Date and Time:</b> June 10, 2023
+              <b>Match status:</b> {status}
             </Typography>
 
             <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>Bangladesh Squad:</b> Shakib Al Hasan, Tamim Iqbal, Mushfiqur
-              Rahim, Mashrafe Mortaza
+              <b>Total over:</b> {totalOver}
             </Typography>
+
             <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>India Squad:</b> Shakib Al Hasan, Tamim Iqbal, Mushfiqur Rahim,
-              Mashrafe Mortaza
+              <b>Toss status:</b> {tossWinner} won the toss and elect to{" "}
+              {tossChoice}
+            </Typography>
+
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>Venue:</b> {venue}
+            </Typography>
+
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>Date and Time:</b> {date}
+            </Typography>
+
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>{team1.name} Captain:</b> {team1.captain.name} (
+              {team1.captain.type})
+            </Typography>
+
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>{team2.name} Captain:</b> {team2.captain.name} (
+              {team2.captain.type})
+            </Typography>
+
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>{team1.name} full Squad:</b>{" "}
+              {team1.players.map(
+                (player) => player.name + "(" + player.type + ")" + ", "
+              )}
+            </Typography>
+
+            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+              <b>{team2.name} full Squad:</b>{" "}
+              {team2.players.map(
+                (player) => player.name + "(" + player.type + ")" + ", "
+              )}
             </Typography>
 
             <Typography
@@ -1378,168 +1418,17 @@ const Cricket = () => {
               variant="h6"
               sx={{ fontWeight: "bold", marginTop: "20px" }}
             >
-              Bangladesh 56/0 (8.2 overs)
+              {battingTeam.name} 56/0 (8.2 overs)
             </Typography>
           </Paper>
         </Grid>
         <Grid item xs={6}>
-          <Paper sx={{ height: "370px", padding: "14px" }}>
-            {/* Select Batsman */}
-            <Typography
-              component="p"
-              variant="p"
-              sx={{ fontSize: "14px", fontWeight: "bold", marginBottom: "8px" }}
-            >
-              Select Batsman
-            </Typography>
-            <FormControl
-              size="small"
-              sx={{ width: "50%", paddingRight: "8px" }}
-            >
-              <InputLabel id="teamAPlayerType3">Strike</InputLabel>
-              <Select
-                labelId="teamAPlayerType3"
-                id="teamAPlayerType3"
-                label="Strike"
-                defaultValue=""
-                {...register("teamAPlayerType3")}
-              >
-                <MenuItem value="All-rounder">All-rounder</MenuItem>
-                <MenuItem value="Batsman">Batsman</MenuItem>
-                <MenuItem value="Bowler">Bowler</MenuItem>
-                <MenuItem value="Fielder">Fielder</MenuItem>
-                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl size="small" sx={{ width: "50%" }}>
-              <InputLabel id="teamAPlayerType3">Non-Strike</InputLabel>
-              <Select
-                labelId="teamAPlayerType3"
-                id="teamAPlayerType3"
-                label="Non-Strike"
-                defaultValue=""
-                {...register("teamAPlayerType3")}
-              >
-                <MenuItem value="All-rounder">All-rounder</MenuItem>
-                <MenuItem value="Batsman">Batsman</MenuItem>
-                <MenuItem value="Bowler">Bowler</MenuItem>
-                <MenuItem value="Fielder">Fielder</MenuItem>
-                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
-              </Select>
-            </FormControl>
-
-            {/* Select Bowler */}
-            <Typography
-              component="p"
-              variant="p"
-              sx={{
-                fontSize: "14px",
-                fontWeight: "bold",
-                marginBottom: "8px",
-                marginTop: "10px",
-              }}
-            >
-              Select Bowler
-            </Typography>
-            <FormControl size="small" fullWidth>
-              <InputLabel id="teamAPlayerType3">Bowler</InputLabel>
-              <Select
-                labelId="teamAPlayerType3"
-                id="teamAPlayerType3"
-                label="Bowler"
-                defaultValue=""
-                {...register("teamAPlayerType3")}
-              >
-                <MenuItem value="All-rounder">All-rounder</MenuItem>
-                <MenuItem value="Batsman">Batsman</MenuItem>
-                <MenuItem value="Bowler">Bowler</MenuItem>
-                <MenuItem value="Fielder">Fielder</MenuItem>
-                <MenuItem value="Wicket-keeper">Wicket-keeper</MenuItem>
-              </Select>
-            </FormControl>
-
-            {/* Ball by Ball Update */}
-            <Typography
-              component="p"
-              variant="p"
-              sx={{
-                fontSize: "14px",
-                fontWeight: "bold",
-                marginBottom: "12px",
-                marginTop: "12px",
-                textAlign: "center",
-              }}
-            >
-              Ball by Ball Update
-            </Typography>
-            <FormControl
-              size="small"
-              sx={{ width: "50%", paddingRight: "8px" }}
-            >
-              <InputLabel id="teamAPlayerType3">Run</InputLabel>
-              <Select
-                labelId="teamAPlayerType3"
-                id="teamAPlayerType3"
-                label="Run"
-                defaultValue="0"
-                {...register("teamAPlayerType3")}
-              >
-                <MenuItem value="0">0</MenuItem>
-                <MenuItem value="1">1</MenuItem>
-                <MenuItem value="2">2</MenuItem>
-                <MenuItem value="3">3</MenuItem>
-                <MenuItem value="4">4</MenuItem>
-                <MenuItem value="5">5</MenuItem>
-                <MenuItem value="6">6</MenuItem>
-                <MenuItem value="7">7</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl size="small" sx={{ width: "50%" }}>
-              <InputLabel id="teamAPlayerType3">
-                Select if the run is extra
-              </InputLabel>
-              <Select
-                labelId="teamAPlayerType3"
-                id="teamAPlayerType3"
-                label="Select if the run is extra"
-                defaultValue=""
-                {...register("teamAPlayerType3")}
-              >
-                <MenuItem value="Wide">Wide</MenuItem>
-                <MenuItem value="No ball">No ball</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl size="small" fullWidth sx={{ marginTop: "10px" }}>
-              <InputLabel id="teamAPlayerType3">
-                Select if the Batsman is out
-              </InputLabel>
-              <Select
-                labelId="teamAPlayerType3"
-                id="teamAPlayerType3"
-                label="Select if the Batsman is out"
-                defaultValue=""
-                {...register("teamAPlayerType3")}
-              >
-                <MenuItem value="Bowled">Bowled</MenuItem>
-                <MenuItem value="Catch out">Catch out</MenuItem>
-                <MenuItem value="Run out">Run out</MenuItem>
-                <MenuItem value="LBW">LBW</MenuItem>
-                <MenuItem value="Stumped">Stumped</MenuItem>
-                <MenuItem value="Hit wicket">Hit wicket</MenuItem>
-              </Select>
-            </FormControl>
-
-            {/* update score button */}
-            <Button
-              type="submit"
-              color="secondary"
-              variant="contained"
-              fullWidth
-              sx={{ marginTop: "20px" }}
-            >
-              Update Score
-            </Button>
-          </Paper>
+          {/* Render Update Score Form Components */}
+          <UpdateScoreForm
+            matchId={_id}
+            bowlingTeam={bowlingTeam}
+            battingTeam={battingTeam}
+          />
         </Grid>
       </Grid>
 
@@ -1563,20 +1452,22 @@ const Cricket = () => {
               <TableCell sx={{ fontWeight: "bold" }}>Batsman</TableCell>
               <TableCell sx={{ fontWeight: "bold" }}>DM</TableCell>
               <TableCell sx={{ fontWeight: "bold" }}>R</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>B</TableCell>
               <TableCell sx={{ fontWeight: "bold" }}>4s</TableCell>
               <TableCell sx={{ fontWeight: "bold" }}>6s</TableCell>
               <TableCell sx={{ fontWeight: "bold" }}>SR</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {battingRows.map((row) => (
-              <TableRow key={row.id} sx={{}}>
-                <TableCell>{row.batsman}</TableCell>
-                <TableCell>{row.dm}</TableCell>
-                <TableCell>{row.run}</TableCell>
-                <TableCell>{row.boundaries}</TableCell>
-                <TableCell>{row.overBoundaries}</TableCell>
-                <TableCell>{row.sr}</TableCell>
+            {team1.players.map((row) => (
+              <TableRow key={row._id} sx={{}}>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.dismissals}</TableCell>
+                <TableCell>{row.runsScored}</TableCell>
+                <TableCell>{row.ballsFaced}</TableCell>
+                <TableCell>{row.fours}</TableCell>
+                <TableCell>{row.sixes}</TableCell>
+                <TableCell>{row.strikeRate}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -1610,15 +1501,15 @@ const Cricket = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {bowlingRows.map((row) => (
-              <TableRow key={row.id} sx={{}}>
-                <TableCell>{row.bowler}</TableCell>
-                <TableCell>{row.over}</TableCell>
-                <TableCell>{row.run}</TableCell>
-                <TableCell>{row.wicket}</TableCell>
+            {team1.players.map((row) => (
+              <TableRow key={row._id} sx={{}}>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.oversBowled}</TableCell>
+                <TableCell>{row.runsConceded}</TableCell>
+                <TableCell>{row.wicketsTaken}</TableCell>
                 <TableCell>{row.noBall}</TableCell>
                 <TableCell>{row.wide}</TableCell>
-                <TableCell>{row.economy}</TableCell>
+                <TableCell>{row.economyRate}</TableCell>
               </TableRow>
             ))}
           </TableBody>
