@@ -12,14 +12,11 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SportsNewsCard = () => {
+const SportsNewsCard = ({ news }) => {
   return (
     <Box gridColumn="span 4">
       <Card sx={{ maxWidth: 370 }}>
-        <CardMedia
-          sx={{ height: 180 }}
-          image="https://preview.colorlib.com/theme/soccer/images/bg_3.jpg.webp"
-        />
+        <CardMedia sx={{ height: 180 }} image={news.coverImgLink} />
         <CardContent>
           <Typography
             component="p"
@@ -32,7 +29,7 @@ const SportsNewsCard = () => {
               marginY: "8px",
             }}
           >
-            <CalendarTodayIcon sx={{ fontSize: "13px" }} /> 25 May 2023
+            <CalendarTodayIcon sx={{ fontSize: "13px" }} /> {news.publishDate}
           </Typography>
           <Typography
             component="h6"
@@ -43,14 +40,10 @@ const SportsNewsCard = () => {
               marginY: "10px",
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos nulla
-            asperiores aliquid laboriosam.
+            {news.newsTitle}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. A odio
-            quod est id tenetur, cumque ad ea magni aliquam quam molestiae sint
-            quo dolorum suscipit. Maxime corporis suscipit dolor, cum earum quod
-            commodi quas ea.
+            {news.content}
           </Typography>
         </CardContent>
         <CardActions>

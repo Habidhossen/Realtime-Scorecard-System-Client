@@ -77,6 +77,7 @@ const Cricket = () => {
         overs: 0,
         wickets: 0,
         runs: 0,
+        balls: 0,
       },
       team2: {
         name: data.teamB,
@@ -88,6 +89,7 @@ const Cricket = () => {
         overs: 0,
         wickets: 0,
         runs: 0,
+        balls: 0,
       },
     };
     // team A player object declare
@@ -101,7 +103,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -117,7 +119,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -133,7 +135,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -149,7 +151,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -165,7 +167,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -181,7 +183,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -197,7 +199,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -213,7 +215,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -229,7 +231,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -245,7 +247,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -261,7 +263,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -280,7 +282,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -296,7 +298,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -312,7 +314,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -328,7 +330,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -344,7 +346,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -360,7 +362,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -376,7 +378,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -392,7 +394,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -408,7 +410,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -424,7 +426,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         wideBalls: 0,
@@ -440,7 +442,7 @@ const Cricket = () => {
         sixes: 0,
         dismissals: "Not Out",
         wicketsTaken: 0,
-        oversBowled: 0,
+        ballsBowled: 0,
         runsConceded: 0,
         economyRate: 0,
         strikeRate: 0,
@@ -512,7 +514,7 @@ const Cricket = () => {
 
   // get Batting Team Name
   const battingTeamName =
-    tossChoice === "bat"
+    tossChoice === "Bat"
       ? tossWinner
       : tossWinner === team1.name
       ? team2.name
@@ -1352,73 +1354,133 @@ const Cricket = () => {
           </DialogActions>
         </Dialog>
       </Box>
+
+      {/* SCORECARD HEADER COMPONENTS */}
+      <Paper elevation={0} sx={{ padding: "14px", marginBottom: "8px" }}>
+        <Typography
+          component="h6"
+          variant="h6"
+          sx={{
+            textAlign: "center",
+            fontWeight: "600",
+            fontSize: "15px",
+            marginBottom: "2px",
+          }}
+        >
+          {name} (Live)
+        </Typography>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box>
+            <Typography
+              component="h6"
+              variant="h6"
+              sx={{ textAlign: "center", fontSize: "20px", fontWeight: "bold" }}
+            >
+              {`${battingTeam.name} ${battingTeam.runs}/${battingTeam.wickets} (${battingTeam.overs} overs)`}
+            </Typography>
+            <Typography
+              component="p"
+              variant="p"
+              sx={{
+                fontSize: "12px",
+                textTransform: "uppercase",
+                marginBottom: "3px",
+              }}
+            >
+              Run rate: {(battingTeam.runs / battingTeam.overs).toFixed(2)}
+            </Typography>
+          </Box>
+
+          <Box>
+            <Typography
+              component="h6"
+              variant="h6"
+              sx={{ textAlign: "center", fontSize: "20px", fontWeight: "bold" }}
+            >
+              {`${bowlingTeam.name} ${bowlingTeam.runs}/${bowlingTeam.wickets} (${bowlingTeam.overs} overs)`}
+            </Typography>
+            <Typography
+              component="p"
+              variant="p"
+              sx={{
+                fontSize: "12px",
+                textTransform: "uppercase",
+                marginBottom: "3px",
+              }}
+            >
+              Run rate: {(bowlingTeam.runs / bowlingTeam.overs).toFixed(2)}
+            </Typography>
+          </Box>
+        </Box>
+      </Paper>
+
       {/* SCORECARD COMPONENTS */}
       <Grid container spacing={2} sx={{ marginBottom: "20px" }}>
         <Grid item xs={6}>
           <Paper sx={{ height: "370px", padding: "14px" }}>
             <Typography
-              component="h6"
-              variant="h6"
+              component="p"
+              variant="p"
               sx={{
-                textAlign: "center",
-                fontWeight: "bold",
-                fontSize: "18px",
-                marginBottom: "12px",
+                fontSize: "12px",
+                textTransform: "uppercase",
+                marginBottom: "3px",
               }}
             >
-              {name}
+              Match Profile
             </Typography>
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+            <Typography component="p" variant="p" sx={{ fontSize: "14px" }}>
               <b>Match status:</b> {status}
             </Typography>
 
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+            <Typography component="p" variant="p" sx={{ fontSize: "14px" }}>
               <b>Total over:</b> {totalOver}
             </Typography>
 
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+            <Typography component="p" variant="p" sx={{ fontSize: "14px" }}>
               <b>Toss status:</b> {tossWinner} won the toss and elect to{" "}
               {tossChoice}
             </Typography>
 
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+            <Typography component="p" variant="p" sx={{ fontSize: "14px" }}>
               <b>Venue:</b> {venue}
             </Typography>
 
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
+            <Typography component="p" variant="p" sx={{ fontSize: "14px" }}>
               <b>Date and Time:</b> {date}
             </Typography>
 
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>{team1.name} Captain:</b> {team1.captain.name} (
-              {team1.captain.type})
-            </Typography>
-
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>{team2.name} Captain:</b> {team2.captain.name} (
-              {team2.captain.type})
-            </Typography>
-
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>{team1.name} full Squad:</b>{" "}
-              {team1.players.map(
-                (player) => player.name + "(" + player.type + ")" + ", "
-              )}
-            </Typography>
-
-            <Typography component="p" variant="p" sx={{ fontSize: "15px" }}>
-              <b>{team2.name} full Squad:</b>{" "}
-              {team2.players.map(
-                (player) => player.name + "(" + player.type + ")" + ", "
-              )}
-            </Typography>
-
             <Typography
-              component="h6"
-              variant="h6"
-              sx={{ fontWeight: "bold", marginTop: "20px" }}
+              component="p"
+              variant="p"
+              sx={{
+                fontSize: "12px",
+                textTransform: "uppercase",
+                marginBottom: "3px",
+                marginTop: "10px",
+              }}
             >
-              {battingTeam.name} {battingTeam.runs}/{battingTeam.wickets} (8.2 overs)
+              Team Profile
+            </Typography>
+
+            <Typography component="p" variant="p" sx={{ fontSize: "14px" }}>
+              <b>Captain:</b> {team1.captain.name} ({team1.name}) &{" "}
+              {team2.captain.name} ({team2.name})
+            </Typography>
+
+            <Typography component="p" variant="p" sx={{ fontSize: "14px" }}>
+              <b>{team1.name} Squad:</b>{" "}
+              {team1.players.map(
+                (player) => player.name + " (" + player.type + ")" + ", "
+              )}
+            </Typography>
+
+            <Typography component="p" variant="p" sx={{ fontSize: "14px" }}>
+              <b>{team2.name} Squad:</b>{" "}
+              {team2.players.map(
+                (player) => player.name + " (" + player.type + ")" + ", "
+              )}
             </Typography>
           </Paper>
         </Grid>
@@ -1444,7 +1506,7 @@ const Cricket = () => {
             marginY: "14px",
           }}
         >
-          Batting Scorecard
+          {battingTeam.name} Batting Scorecard
         </Typography>
         <Table sx={{ minWidth: 650 }}>
           <TableHead>
@@ -1486,7 +1548,7 @@ const Cricket = () => {
             marginY: "14px",
           }}
         >
-          Bowling Scorecard
+          {bowlingTeam.name} Bowling Scorecard
         </Typography>
         <Table sx={{ minWidth: 650 }}>
           <TableHead>
@@ -1504,7 +1566,95 @@ const Cricket = () => {
             {bowlingTeam.players.map((row) => (
               <TableRow key={row._id} sx={{}}>
                 <TableCell>{row.name}</TableCell>
-                <TableCell>{row.oversBowled}</TableCell>
+                <TableCell>{`${Math.floor(
+                  row.ballsBowled / 6
+                )}.${row.ballsBowled % 6}`}</TableCell>
+                <TableCell>{row.runsConceded}</TableCell>
+                <TableCell>{row.wicketsTaken}</TableCell>
+                <TableCell>{row.noBalls}</TableCell>
+                <TableCell>{row.wideBalls}</TableCell>
+                <TableCell>{row.economyRate}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      {/* SCORECARD TABLE (Batting Team) */}
+      <TableContainer component={Paper} sx={{ marginTop: "16px" }}>
+        <Typography
+          component="h6"
+          variant="h6"
+          sx={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: "16px",
+            marginY: "14px",
+          }}
+        >
+          {bowlingTeam.name} Batting Scorecard
+        </Typography>
+        <Table sx={{ minWidth: 650 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{ fontWeight: "bold" }}>Batsman</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>DM</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>R</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>B</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>4s</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>6s</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>SR</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {bowlingTeam.players.map((row) => (
+              <TableRow key={row._id} sx={{}}>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.dismissals}</TableCell>
+                <TableCell>{row.runsScored}</TableCell>
+                <TableCell>{row.ballsFaced}</TableCell>
+                <TableCell>{row.fours}</TableCell>
+                <TableCell>{row.sixes}</TableCell>
+                <TableCell>{row.strikeRate}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      {/* SCORECARD TABLE (Bowling Team) */}
+      <TableContainer component={Paper} sx={{ marginTop: "16px" }}>
+        <Typography
+          component="h6"
+          variant="h6"
+          sx={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: "16px",
+            marginY: "14px",
+          }}
+        >
+          {battingTeam.name} Bowling Scorecard
+        </Typography>
+        <Table sx={{ minWidth: 650 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{ fontWeight: "bold" }}>Bowler</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Over</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>R</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>W</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>NB</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>WD</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>ECO</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {battingTeam.players.map((row) => (
+              <TableRow key={row._id} sx={{}}>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{`${Math.floor(
+                  row.ballsBowled / 6
+                )}.${row.ballsBowled % 6}`}</TableCell>
                 <TableCell>{row.runsConceded}</TableCell>
                 <TableCell>{row.wicketsTaken}</TableCell>
                 <TableCell>{row.noBalls}</TableCell>

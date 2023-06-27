@@ -1,9 +1,21 @@
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { Box, Button, Container, Paper, Typography } from "@mui/material";
 import React from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import Loader from "../../Shared/Loader/Loader";
 
 const SportsEvents = () => {
+  // fetch data from database by react query
+  const { data: events, isLoading, refetch } = useQuery("event", () =>
+    fetch("http://localhost:5000/api/v1/event").then((res) => res.json())
+  );
+
+  // loading
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <Container maxWidth="lg" sx={{ marginTop: "70px" }}>
       <Typography

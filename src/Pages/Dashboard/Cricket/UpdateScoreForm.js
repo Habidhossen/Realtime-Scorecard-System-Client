@@ -163,7 +163,7 @@ const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
           labelId="extraRunType"
           id="extraRunType"
           label="Select if the run is extra"
-          defaultValue=""
+          defaultValue={0}
           {...register("extraRunType")}
         >
           <MenuItem value={0}>
