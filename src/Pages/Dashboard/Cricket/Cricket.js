@@ -1428,7 +1428,7 @@ const Cricket = () => {
               Run rate: {(bowlingTeam.runs / bowlingTeam.overs).toFixed(2)}
             </Typography>
 
-            {bowlingTeam.balls >= 1 ||
+            {/* {bowlingTeam.balls >= 1 ||
               bowlingTeam.runs <=
                 battingTeam.run(
                   bowlingTeam.runs >= battingTeam.runs && (
@@ -1447,7 +1447,7 @@ const Cricket = () => {
                         bowlingTeam.balls} balls`}
                     </Typography>
                   )
-                )}
+                )} */}
 
             {bowlingTeam.name === matchWinner && (
               <Typography
@@ -1580,6 +1580,7 @@ const Cricket = () => {
               bowlingTeam={bowlingTeam}
               battingTeam={battingTeam}
               bowlingTeamTotalWickets={bowlingTeamTotalWickets}
+              refetch={refetch}
             />
           ) : (
             <ScoreUpdateFormA
@@ -1588,6 +1589,7 @@ const Cricket = () => {
               battingTeam={battingTeam}
               battingTeamTotalWickets={battingTeamTotalWickets}
               bowlingTeamTotalWickets={bowlingTeamTotalWickets}
+              refetch={refetch}
             />
           )}
         </Grid>

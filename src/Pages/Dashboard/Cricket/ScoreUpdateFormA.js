@@ -11,7 +11,7 @@ import {
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const ScoreUpdateFormA = ({ bowlingTeam, battingTeam, matchId }) => {
+const ScoreUpdateFormA = ({ bowlingTeam, battingTeam, matchId, refetch }) => {
   // handle react-hook-form
   const {
     register,
@@ -37,10 +37,7 @@ const ScoreUpdateFormA = ({ bowlingTeam, battingTeam, matchId }) => {
     })
       .then((response) => response.json())
       .then((data) => data);
-    // toast.success("Event added successfully", {
-    //   theme: "colored",
-    //   autoClose: 3000,
-    // });
+    refetch();
     reset();
   };
 

@@ -18,6 +18,7 @@ const ScoreUpdateFormB = ({
   bowlingTeam,
   battingTeam,
   bowlingTeamTotalWickets,
+  refetch,
 }) => {
   // handle react-hook-form
   const {
@@ -44,10 +45,8 @@ const ScoreUpdateFormB = ({
     })
       .then((response) => response.json())
       .then((data) => data);
-    // toast.success("Event added successfully", {
-    //   theme: "colored",
-    //   autoClose: 3000,
-    // });
+
+    refetch();
     reset();
   };
 
@@ -55,7 +54,6 @@ const ScoreUpdateFormB = ({
   const handleMatchFinishBtn = () => {
     // declare variable
     let matchWinner, status;
-
     // check which team is Match Winner
     if (bowlingTeam.runs > battingTeam.runs) {
       matchWinner = bowlingTeam.name;
@@ -83,10 +81,8 @@ const ScoreUpdateFormB = ({
     })
       .then((response) => response.json())
       .then((data) => data);
-    // toast.success("Event added successfully", {
-    //   theme: "colored",
-    //   autoClose: 3000,
-    // });
+
+    refetch();
     reset();
   };
 
