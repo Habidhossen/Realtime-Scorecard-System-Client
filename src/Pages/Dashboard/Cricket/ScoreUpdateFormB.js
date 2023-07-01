@@ -1,6 +1,7 @@
 import {
   Button,
   FormControl,
+  FormHelperText,
   InputLabel,
   MenuItem,
   Paper,
@@ -10,7 +11,14 @@ import {
 import React from "react";
 import { useForm } from "react-hook-form";
 
-const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
+const ScoreUpdateFormB = ({
+  matchId,
+  totalOver,
+  status,
+  bowlingTeam,
+  battingTeam,
+  bowlingTeamTotalWickets,
+}) => {
   // handle react-hook-form
   const {
     register,
@@ -43,6 +51,45 @@ const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
     reset();
   };
 
+  // Handle Match Finish Button
+  const handleMatchFinishBtn = () => {
+    // declare variable
+    let matchWinner, status;
+
+    // check which team is Match Winner
+    if (bowlingTeam.runs > battingTeam.runs) {
+      matchWinner = bowlingTeam.name;
+      status = `${bowlingTeam.name} won by ${bowlingTeamTotalWickets -
+        bowlingTeam.wickets} wickets`;
+    } else if (battingTeam.runs > bowlingTeam.runs) {
+      matchWinner = battingTeam.name;
+      status = `${battingTeam.name} won by ${battingTeam.runs -
+        bowlingTeam.runs} runs`;
+    } else if (battingTeam.runs === bowlingTeam.runs) {
+      matchWinner = "Match is Tie";
+      status = `${battingTeam.name} vs ${bowlingTeam.name} match is tie`;
+    }
+
+    // make a new object
+    const finalData = { status, matchWinner };
+
+    // send data to the server
+    fetch(`http://localhost:5000/api/v1/finish-cricket-match/${matchId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(finalData),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+    // toast.success("Event added successfully", {
+    //   theme: "colored",
+    //   autoClose: 3000,
+    // });
+    reset();
+  };
+
   return (
     <Paper
       component="form"
@@ -64,9 +111,10 @@ const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
           id="strikeBatsman"
           label="Strike"
           defaultValue=""
-          {...register("strikeBatsman")}
+          {...register("strikeBatsman", { required: true })}
+          error={errors.strikeBatsman}
         >
-          {battingTeam.players
+          {bowlingTeam.players
             .filter((player) => player.dismissals === "Not Out") //filter data which players are Not Out yet
             .map((player) => (
               <MenuItem key={player._id} value={player._id}>
@@ -74,6 +122,9 @@ const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
               </MenuItem>
             ))}
         </Select>
+        <FormHelperText sx={{ color: "#d32f2f" }}>
+          {errors.strikeBatsman && "Batsman is required"}
+        </FormHelperText>
       </FormControl>
       <FormControl size="small" sx={{ width: "50%" }}>
         <InputLabel id="nonStrikeBatsman">Non-Strike</InputLabel>
@@ -82,9 +133,10 @@ const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
           id="nonStrikeBatsman"
           label="Non-Strike"
           defaultValue=""
-          {...register("nonStrikeBatsman")}
+          {...register("nonStrikeBatsman", { required: true })}
+          error={errors.nonStrikeBatsman}
         >
-          {battingTeam.players
+          {bowlingTeam.players
             .filter((player) => player.dismissals === "Not Out") //filter data which players are Not Out yet
             .map((player) => (
               <MenuItem key={player._id} value={player._id}>
@@ -92,6 +144,9 @@ const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
               </MenuItem>
             ))}
         </Select>
+        <FormHelperText sx={{ color: "#d32f2f" }}>
+          {errors.nonStrikeBatsman && "Batsman is required"}
+        </FormHelperText>
       </FormControl>
 
       {/* Select Bowler */}
@@ -114,14 +169,18 @@ const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
           id="strikeBowler"
           label="Bowler"
           defaultValue=""
-          {...register("strikeBowler")}
+          {...register("strikeBowler", { required: true })}
+          error={errors.strikeBowler}
         >
-          {bowlingTeam.players.map((player) => (
+          {battingTeam.players.map((player) => (
             <MenuItem key={player._id} value={player._id}>
               {player.name}
             </MenuItem>
           ))}
         </Select>
+        <FormHelperText sx={{ color: "#d32f2f" }}>
+          {errors.strikeBowler && "Bowler is required"}
+        </FormHelperText>
       </FormControl>
 
       {/* Ball by Ball Update */}
@@ -195,17 +254,32 @@ const UpdateScoreForm = ({ bowlingTeam, battingTeam, matchId }) => {
       </FormControl>
 
       {/* update score button */}
-      <Button
-        type="submit"
-        color="secondary"
-        variant="contained"
-        fullWidth
-        sx={{ marginTop: "20px" }}
-      >
-        Update Score
-      </Button>
+      {bowlingTeam.wickets >= bowlingTeamTotalWickets ||
+      bowlingTeam.overs >= totalOver ||
+      bowlingTeam.runs > battingTeam.runs ? (
+        <Button
+          onClick={handleMatchFinishBtn}
+          disabled={status !== "In Progress"}
+          color="error"
+          variant="contained"
+          fullWidth
+          sx={{ marginTop: "20px" }}
+        >
+          Match Finish
+        </Button>
+      ) : (
+        <Button
+          type="submit"
+          color="success"
+          variant="contained"
+          fullWidth
+          sx={{ marginTop: "20px" }}
+        >
+          Score Update ({bowlingTeam.name})
+        </Button>
+      )}
     </Paper>
   );
 };
 
-export default UpdateScoreForm;
+export default ScoreUpdateFormB;

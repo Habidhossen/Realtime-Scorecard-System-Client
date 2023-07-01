@@ -12,12 +12,6 @@ import {
   MenuItem,
   Paper,
   Select,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
   TextField,
   Typography,
 } from "@mui/material";
@@ -25,7 +19,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import Loader from "../../Shared/Loader/Loader";
-import UpdateScoreForm from "./UpdateScoreForm";
+import ScoreUpdateFormA from "./ScoreUpdateFormA";
+import ScoreUpdateFormB from "./ScoreUpdateFormB";
+import ScorecardTable from "./ScorecardTable";
 
 const Cricket = () => {
   // modal state
@@ -530,8 +526,13 @@ const Cricket = () => {
     bowlingTeam = team1;
   }
 
+  // get Batting and Bowling Team total Wickets
+  const battingTeamTotalWickets = battingTeam.players.length - 1;
+  const bowlingTeamTotalWickets = bowlingTeam.players.length - 1;
+
   return (
     <Box>
+      {/* ADD NEW MATCH COMPONENTS*/}
       <Box mb={4}>
         <Box
           sx={{
@@ -1354,15 +1355,15 @@ const Cricket = () => {
           </DialogActions>
         </Dialog>
       </Box>
-
       {/* SCORECARD HEADER COMPONENTS */}
       <Paper elevation={0} sx={{ padding: "14px", marginBottom: "8px" }}>
         <Typography
           component="h6"
           variant="h6"
           sx={{
+            color: "#009270",
             textAlign: "center",
-            fontWeight: "600",
+            fontWeight: "700",
             fontSize: "15px",
             marginBottom: "2px",
           }}
@@ -1390,6 +1391,21 @@ const Cricket = () => {
             >
               Run rate: {(battingTeam.runs / battingTeam.overs).toFixed(2)}
             </Typography>
+
+            {battingTeam.name === matchWinner && (
+              <Typography
+                component="p"
+                variant="p"
+                sx={{
+                  color: "#1866db",
+                  fontSize: "13px",
+                  fontWeight: "bold",
+                  marginBottom: "3px",
+                }}
+              >
+                {status}
+              </Typography>
+            )}
           </Box>
 
           <Box>
@@ -1411,6 +1427,73 @@ const Cricket = () => {
             >
               Run rate: {(bowlingTeam.runs / bowlingTeam.overs).toFixed(2)}
             </Typography>
+
+            {bowlingTeam.balls >= 1 ||
+              bowlingTeam.runs <=
+                battingTeam.run(
+                  bowlingTeam.runs >= battingTeam.runs && (
+                    <Typography
+                      component="p"
+                      variant="p"
+                      sx={{
+                        color: "#E90B37",
+                        fontSize: "13px",
+                        fontWeight: "700",
+                        marginBottom: "3px",
+                      }}
+                    >
+                      {`${bowlingTeam.name} need ${battingTeam.runs -
+                        bowlingTeam.runs} runs in ${totalOver * 6 -
+                        bowlingTeam.balls} balls`}
+                    </Typography>
+                  )
+                )}
+
+            {bowlingTeam.name === matchWinner && (
+              <Typography
+                component="p"
+                variant="p"
+                sx={{
+                  color: "#1866db",
+                  fontSize: "13px",
+                  fontWeight: "bold",
+                  marginBottom: "3px",
+                }}
+              >
+                {status}
+              </Typography>
+            )}
+
+            {/* {bowlingTeam.name === matchWinner ? (
+              <Typography
+                component="p"
+                variant="p"
+                sx={{
+                  color: "#1866db",
+                  fontSize: "13px",
+                  fontWeight: "bold",
+                  marginBottom: "3px",
+                }}
+              >
+                {status}
+              </Typography>
+            ) : (
+              bowlingTeam.balls >= 1 && (
+                <Typography
+                  component="p"
+                  variant="p"
+                  sx={{
+                    color: "#E90B37",
+                    fontSize: "13px",
+                    fontWeight: "700",
+                    marginBottom: "3px",
+                  }}
+                >
+                  {`${bowlingTeam.name} needs ${battingTeam.runs -
+                    bowlingTeam.runs} runs`}
+                </Typography>
+              )
+            )} */}
           </Box>
         </Box>
       </Paper>
@@ -1484,187 +1567,33 @@ const Cricket = () => {
             </Typography>
           </Paper>
         </Grid>
+
         <Grid item xs={6}>
-          {/* Render Update Score Form Components */}
-          <UpdateScoreForm
-            matchId={_id}
-            bowlingTeam={bowlingTeam}
-            battingTeam={battingTeam}
-          />
+          {/* Render UpdateScoreForm Components */}
+
+          {battingTeam.wickets >= battingTeamTotalWickets ||
+          battingTeam.overs >= totalOver ? (
+            <ScoreUpdateFormB
+              matchId={_id}
+              status={status}
+              totalOver={totalOver}
+              bowlingTeam={bowlingTeam}
+              battingTeam={battingTeam}
+              bowlingTeamTotalWickets={bowlingTeamTotalWickets}
+            />
+          ) : (
+            <ScoreUpdateFormA
+              matchId={_id}
+              bowlingTeam={bowlingTeam}
+              battingTeam={battingTeam}
+              battingTeamTotalWickets={battingTeamTotalWickets}
+              bowlingTeamTotalWickets={bowlingTeamTotalWickets}
+            />
+          )}
         </Grid>
       </Grid>
-
-      {/* SCORECARD TABLE (Batting Team) */}
-      <TableContainer component={Paper}>
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: "16px",
-            marginY: "14px",
-          }}
-        >
-          {battingTeam.name} Batting Scorecard
-        </Typography>
-        <Table sx={{ minWidth: 650 }}>
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ fontWeight: "bold" }}>Batsman</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>DM</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>R</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>B</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>4s</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>6s</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>SR</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {battingTeam.players.map((row) => (
-              <TableRow key={row._id} sx={{}}>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.dismissals}</TableCell>
-                <TableCell>{row.runsScored}</TableCell>
-                <TableCell>{row.ballsFaced}</TableCell>
-                <TableCell>{row.fours}</TableCell>
-                <TableCell>{row.sixes}</TableCell>
-                <TableCell>{row.strikeRate}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-
-      {/* SCORECARD TABLE (Bowling Team) */}
-      <TableContainer component={Paper} sx={{ marginTop: "16px" }}>
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: "16px",
-            marginY: "14px",
-          }}
-        >
-          {bowlingTeam.name} Bowling Scorecard
-        </Typography>
-        <Table sx={{ minWidth: 650 }}>
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ fontWeight: "bold" }}>Bowler</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Over</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>R</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>W</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>NB</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>WD</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>ECO</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {bowlingTeam.players.map((row) => (
-              <TableRow key={row._id} sx={{}}>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{`${Math.floor(
-                  row.ballsBowled / 6
-                )}.${row.ballsBowled % 6}`}</TableCell>
-                <TableCell>{row.runsConceded}</TableCell>
-                <TableCell>{row.wicketsTaken}</TableCell>
-                <TableCell>{row.noBalls}</TableCell>
-                <TableCell>{row.wideBalls}</TableCell>
-                <TableCell>{row.economyRate}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-
-      {/* SCORECARD TABLE (Batting Team) */}
-      <TableContainer component={Paper} sx={{ marginTop: "16px" }}>
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: "16px",
-            marginY: "14px",
-          }}
-        >
-          {bowlingTeam.name} Batting Scorecard
-        </Typography>
-        <Table sx={{ minWidth: 650 }}>
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ fontWeight: "bold" }}>Batsman</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>DM</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>R</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>B</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>4s</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>6s</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>SR</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {bowlingTeam.players.map((row) => (
-              <TableRow key={row._id} sx={{}}>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.dismissals}</TableCell>
-                <TableCell>{row.runsScored}</TableCell>
-                <TableCell>{row.ballsFaced}</TableCell>
-                <TableCell>{row.fours}</TableCell>
-                <TableCell>{row.sixes}</TableCell>
-                <TableCell>{row.strikeRate}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-
-      {/* SCORECARD TABLE (Bowling Team) */}
-      <TableContainer component={Paper} sx={{ marginTop: "16px" }}>
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: "16px",
-            marginY: "14px",
-          }}
-        >
-          {battingTeam.name} Bowling Scorecard
-        </Typography>
-        <Table sx={{ minWidth: 650 }}>
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ fontWeight: "bold" }}>Bowler</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Over</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>R</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>W</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>NB</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>WD</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>ECO</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {battingTeam.players.map((row) => (
-              <TableRow key={row._id} sx={{}}>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{`${Math.floor(
-                  row.ballsBowled / 6
-                )}.${row.ballsBowled % 6}`}</TableCell>
-                <TableCell>{row.runsConceded}</TableCell>
-                <TableCell>{row.wicketsTaken}</TableCell>
-                <TableCell>{row.noBalls}</TableCell>
-                <TableCell>{row.wideBalls}</TableCell>
-                <TableCell>{row.economyRate}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      {/* SCORECARD TABLE COMPONENTS */}
+      <ScorecardTable bowlingTeam={bowlingTeam} battingTeam={battingTeam} />
     </Box>
   );
 };
