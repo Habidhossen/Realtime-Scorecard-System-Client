@@ -5,9 +5,22 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <Box my={3}>
-      <Typography component="p" align="center">
+    <Box sx={{ backgroundColor: "#ffffff", paddingY: "24px" }}>
+      <Typography
+        component="p"
+        variant="p"
+        align="center"
+        sx={{ fontSize: "13px", marginBottom: "4px" }}
+      >
         Copyright © {year} Habid Hossen. All rights reserved.
+      </Typography>
+      <Typography
+        component="p"
+        variant="p"
+        align="center"
+        sx={{ fontSize: "13px", fontWeight: "600" }}
+      >
+        A Real-time Scorecard System
       </Typography>
     </Box>
   );

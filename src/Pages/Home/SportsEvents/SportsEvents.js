@@ -1,9 +1,10 @@
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { Box, Button, Container, Paper, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import Loader from "../../Shared/Loader/Loader";
+import SportsEventsCard from "./SportsEventsCard";
 
 const SportsEvents = () => {
   // fetch data from database by react query
@@ -30,49 +31,11 @@ const SportsEvents = () => {
       >
         Upcoming Sport Events
       </Typography>
-      <Paper
-        sx={{
-          backgroundImage: "linear-gradient(to right, #673AB7, #512DA8)",
-          color: "#ffffff",
-          borderRadius: "8px",
-          paddingY: "60px",
-        }}
-      >
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: "34px",
-            textTransform: "uppercase",
-            marginBottom: "38px",
-          }}
-        >
-          CSE Sports Tournament 2023
-        </Typography>
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            textAlign: "center",
-            fontSize: "16px",
-            fontWeight: "bold",
-          }}
-        >
-          20 July 2023 - 20 August 2023
-        </Typography>
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            textAlign: "center",
-            fontSize: "16px",
-          }}
-        >
-          Venue: Bangabandhu Freedom Square
-        </Typography>
-      </Paper>
+
+      {/* rendering sports events card */}
+      {events.data
+        .map((event) => <SportsEventsCard key={event._id} event={event} />)
+        .slice(0, 1)}
 
       {/* footer button */}
       <Box

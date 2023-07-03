@@ -1,64 +1,38 @@
-import { Container, Paper, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import React from "react";
+import { useQuery } from "react-query";
+import Loader from "../../Shared/Loader/Loader";
+import SportsEventsCard from "../SportsEvents/SportsEventsCard";
 
 const AllSportsEvents = () => {
+  // fetch data from database by react query
+  const { data: events, isLoading, refetch } = useQuery("event", () =>
+    fetch("http://localhost:5000/api/v1/event").then((res) => res.json())
+  );
+
+  // loading
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
-    <Container maxWidth="lg" sx={{ marginx: "0px" }}>
+    <Container maxWidth="lg" sx={{ marginY: "100px" }}>
       <Typography
         component="h6"
         variant="h6"
         sx={{
           textAlign: "center",
           fontWeight: "bold",
-          fontSize: "26px",
-          marginY: "20px",
+          fontSize: "24px",
+          marginBottom: "40px",
         }}
       >
-        ALl Sport Events
+        Upcoming All Sport Events
       </Typography>
-      <Paper
-        sx={{
-          backgroundImage: "linear-gradient(to right, #673AB7, #512DA8)",
-          color: "#ffffff",
-          borderRadius: "8px",
-          paddingY: "60px",
-        }}
-      >
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: "34px",
-            textTransform: "uppercase",
-            marginBottom: "38px",
-          }}
-        >
-          CSE Sports Tournament 2023
-        </Typography>
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            textAlign: "center",
-            fontSize: "16px",
-            fontWeight: "bold",
-          }}
-        >
-          20 July 2023 - 20 August 2023
-        </Typography>
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            textAlign: "center",
-            fontSize: "16px",
-          }}
-        >
-          Venue: Bangabandhu Freedom Square
-        </Typography>
-      </Paper>
+
+      {/* rendering sports events card */}
+      {events.data.map((event) => (
+        <SportsEventsCard key={event._id} event={event} />
+      ))}
     </Container>
   );
 };
