@@ -49,7 +49,7 @@ const SportsNewsCard = ({ news }) => {
         <CardActions>
           <Button
             component={Link}
-            to="sports-details"
+            to={`/sport-news/${news._id}`}
             size="small"
             color="primary"
           >

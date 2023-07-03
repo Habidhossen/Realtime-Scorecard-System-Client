@@ -15,6 +15,7 @@ import AllSportsEvents from "../../pages/Home/AllSportsEvents/AllSportsEvents";
 import AllSportsNews from "../../pages/Home/AllSportsNews/AllSportsNews";
 import Home from "../../pages/Home/Home/Home";
 import MatchSchedule from "../../pages/Home/MatchSchedule/MatchSchedule";
+import SportsNewsDetails from "../../pages/Home/SportsNews/SportsNewsDetails";
 import WatchLiveMatch from "../../pages/Home/WatchLiveMatch/WatchLiveMatch";
 import Login from "../../pages/Login/Login";
 import DisplayError from "../../pages/Shared/DisplayError/DisplayError";
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/all-sports-news",
         element: <AllSportsNews />,
+      },
+      {
+        path: "/sport-news/:newsId",
+        element: <SportsNewsDetails />,
       },
       {
         path: "/live-match",
