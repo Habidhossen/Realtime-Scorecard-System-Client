@@ -9,7 +9,14 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import auth from "../../../Firebase/Firebase.init";
+import Loader from "../../Shared/Loader/Loader";
 import AdminTable from "./AdminTable";
 
 const MakeAdmin = () => {
@@ -33,11 +40,59 @@ const MakeAdmin = () => {
     reset,
   } = useForm();
 
-  // handle form data
-  const onSubmit = (data) => {
-    console.log(data);
-    handleClose();
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth, {
+    sendEmailVerification: true,
+  });
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  // navigate hook
+  const navigate = useNavigate();
+
+  // handle registration using name, email and password
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    saveUserDB(data.name, data.email);
   };
+
+  // save user to database
+  const saveUserDB = (name, email) => {
+    const createUserData = { name, email };
+    fetch("http://localhost:5000/api/v1/admin", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(createUserData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  // loading
+  if (loading || updating) {
+    return <Loader />;
+  }
+
+  // declare a variable for the error message
+  let errorMessage = "";
+
+  // check for errors and updateError
+  if (error || updateError) {
+    errorMessage =
+      "Error: " +
+      ((error && error.message) || (updateError && updateError.message));
+  }
 
   return (
     <Box>
@@ -99,11 +154,20 @@ const MakeAdmin = () => {
               fullWidth
               variant="outlined"
               size="small"
-              {...register("password", { required: true })}
+              {...register("password", {
+                required: true,
+              })}
               error={errors.password}
               helperText={errors.password && "Password is required"}
             />
           </DialogContent>
+          <Typography
+            variant="span"
+            component="span"
+            sx={{ fontSize: "16px", color: "red" }}
+          >
+            {errorMessage}
+          </Typography>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
             <Button type="submit">Save</Button>

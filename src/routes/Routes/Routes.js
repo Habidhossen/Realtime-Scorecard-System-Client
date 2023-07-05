@@ -4,6 +4,7 @@ import Main from "../../Layouts/Main/Main";
 import AdminProfile from "../../pages/Dashboard/AdminProfile/AdminProfile";
 import Cricket from "../../pages/Dashboard/Cricket/Cricket";
 import Dashboard from "../../pages/Dashboard/Dashboard/Dashboard";
+import DashboardHome from "../../pages/Dashboard/DashboardHome/DashboardHome";
 import Events from "../../pages/Dashboard/Events/Events";
 import Football from "../../pages/Dashboard/Football/Football";
 import LiveStreaming from "../../pages/Dashboard/LiveStreaming/LiveStreaming";
@@ -20,6 +21,7 @@ import SportsNewsDetails from "../../pages/Home/SportsNews/SportsNewsDetails";
 import WatchLiveMatch from "../../pages/Home/WatchLiveMatch/WatchLiveMatch";
 import Login from "../../pages/Login/Login";
 import DisplayError from "../../pages/Shared/DisplayError/DisplayError";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -67,12 +69,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
     errorElement: <DisplayError />,
     children: [
       {
         path: "/dashboard",
-        element: <h1>Welcome to Dashboard</h1>,
+        element: <DashboardHome />,
       },
       {
         path: "/dashboard/live-streaming",

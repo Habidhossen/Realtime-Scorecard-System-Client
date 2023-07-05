@@ -1,5 +1,4 @@
 import {
-  AccountCircleRounded,
   AdminPanelSettingsRounded,
   ArticleRounded,
   ChevronLeftRounded,
@@ -7,6 +6,7 @@ import {
   GridViewRounded,
   LogoutRounded,
   NotesRounded,
+  ScoreboardRounded,
   SmartDisplayRounded,
   SportsCricketRounded,
 } from "@mui/icons-material";
@@ -27,9 +27,12 @@ import {
 import MuiAppBar from "@mui/material/AppBar";
 import MuiDrawer from "@mui/material/Drawer";
 import { styled } from "@mui/material/styles";
+import { signOut } from "firebase/auth";
 import * as React from "react";
 import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+import auth from "../../../Firebase/Firebase.init";
 
 // Drawer Code
 const drawerWidth = 240;
@@ -90,6 +93,14 @@ const Dashboard = () => {
     setSelectedLink(link);
   };
 
+  // get user info from useAuthState
+  const [user] = useAuthState(auth);
+
+  // handle logout
+  const logout = () => {
+    signOut(auth);
+  };
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -120,12 +131,22 @@ const Dashboard = () => {
           >
             Admin Dashboard
           </Typography>
-          <h4>Profile</h4>
-          {/* <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton> */}
+          <Box>
+            <Typography
+              variant="h6"
+              component="h6"
+              sx={{ fontSize: "14px", fontWeight: "bold", textAlign: "end" }}
+            >
+              {user.displayName}
+            </Typography>
+            <Typography
+              variant="p"
+              component="p"
+              sx={{ fontSize: "13px", textAlign: "end" }}
+            >
+              {user.email}
+            </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -197,7 +218,7 @@ const Dashboard = () => {
             }}
           >
             <ListItemIcon>
-              <SportsCricketRounded />
+              <ScoreboardRounded />
             </ListItemIcon>
             <ListItemText primary="Manage Cricket Match" />
           </ListItemButton>
@@ -227,7 +248,7 @@ const Dashboard = () => {
             <ListItemIcon>
               <ArticleRounded />
             </ListItemIcon>
-            <ListItemText primary="Sports News" />
+            <ListItemText primary="Sport News" />
           </ListItemButton>
 
           <ListItemButton
@@ -241,7 +262,7 @@ const Dashboard = () => {
             <ListItemIcon>
               <EmojiEventsRounded />
             </ListItemIcon>
-            <ListItemText primary="Sports Event" />
+            <ListItemText primary="Sport Event" />
           </ListItemButton>
 
           <Divider sx={{ my: 1 }} />
@@ -251,7 +272,7 @@ const Dashboard = () => {
             Others
           </ListSubheader>
 
-          <ListItemButton
+          {/* <ListItemButton
             component={Link}
             to="account"
             selected={"account" === selectedLink}
@@ -263,7 +284,7 @@ const Dashboard = () => {
               <AccountCircleRounded />
             </ListItemIcon>
             <ListItemText primary="Account" />
-          </ListItemButton>
+          </ListItemButton> */}
 
           <ListItemButton
             component={Link}
@@ -276,14 +297,14 @@ const Dashboard = () => {
             <ListItemIcon>
               <AdminPanelSettingsRounded />
             </ListItemIcon>
-            <ListItemText primary="Make Admin" />
+            <ListItemText primary="Manage Admin" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to="logout">
+          <ListItemButton onClick={logout}>
             <ListItemIcon>
-              <LogoutRounded />
+              <LogoutRounded sx={{ color: "red" }} />
             </ListItemIcon>
-            <ListItemText primary="Logout" />
+            <ListItemText primary="Logout" sx={{ color: "red" }} />
           </ListItemButton>
         </List>
       </Drawer>

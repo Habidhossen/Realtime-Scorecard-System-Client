@@ -1,6 +1,10 @@
 import { Box, Button, FormControl, TextField, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import auth from "../../Firebase/Firebase.init";
+import Loader from "../Shared/Loader/Loader";
 
 const Login = () => {
   // handle react-hook-form
@@ -11,10 +15,40 @@ const Login = () => {
     reset,
   } = useForm();
 
-  // handle form data
+  const [
+    signInWithEmailAndPassword,
+    emailUser,
+    emailLoading,
+    emailError,
+  ] = useSignInWithEmailAndPassword(auth);
+
+  // handling login
   const onSubmit = (data) => {
-    console.log(data);
+    signInWithEmailAndPassword(data.email, data.password);
   };
+
+  // use navigate hook
+  const navigate = useNavigate();
+
+  // if get user
+  useEffect(() => {
+    if (emailUser) {
+      navigate("/dashboard");
+    }
+  }, [emailUser]);
+
+  // loading
+  if (emailLoading) {
+    return <Loader />;
+  }
+
+  // declare a variable for the error message
+  let errorMessage = "";
+
+  // check for errors and updateError
+  if (emailError) {
+    errorMessage = "Error: " + (emailError && emailError.message);
+  }
 
   return (
     <Box
@@ -25,7 +59,7 @@ const Login = () => {
         width: "350px",
         padding: "40px 30px",
         borderRadius: "10px",
-        margin: "150px auto",
+        margin: "150px auto 100px auto",
       }}
       component="form"
       onSubmit={handleSubmit(onSubmit)}
@@ -45,7 +79,7 @@ const Login = () => {
           helperText={errors.email && "Email is required"}
         />
       </FormControl>
-      <FormControl sx={{ mb: 5 }} variant="outlined">
+      <FormControl variant="outlined">
         <TextField
           type="password"
           label="Password"
@@ -56,7 +90,25 @@ const Login = () => {
           helperText={errors.password && "Password is required"}
         />
       </FormControl>
-      <Button type="submit" variant="contained" color="primary" size="large">
+      <Typography
+        variant="span"
+        component="span"
+        sx={{
+          marginY: "8px",
+          fontSize: "14px",
+          textAlign: "center",
+          color: "red",
+        }}
+      >
+        {errorMessage}
+      </Typography>
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        size="large"
+        sx={{ marginTop: "16px" }}
+      >
         Login
       </Button>
     </Box>
