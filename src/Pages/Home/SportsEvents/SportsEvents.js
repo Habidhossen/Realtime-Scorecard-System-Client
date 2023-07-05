@@ -1,5 +1,5 @@
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
@@ -75,10 +75,12 @@ const SportsEvents = () => {
         </Box>
       </Box>
 
-      {/* rendering sports events card */}
-      {events.data
-        .map((event) => <SportsEventsCard key={event._id} event={event} />)
-        .slice(0, 1)}
+      <Grid container spacing={2}>
+        {events.data
+          .map((event) => <SportsEventsCard key={event._id} event={event} />)
+          .reverse()
+          .slice(0, 1)}
+      </Grid>
     </Container>
   );
 };

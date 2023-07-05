@@ -1,7 +1,7 @@
 import React from "react";
-import AllCricketMatches from "../AllCricketMatches/AllCricketMatches";
 import Banner from "../Banner/Banner";
 import LatestMatch from "../LatestMatch/LatestMatch";
+import Matches from "../Matches/Matches";
 import SportsEvents from "../SportsEvents/SportsEvents";
 import SportsNews from "../SportsNews/SportsNews";
 
@@ -10,7 +10,7 @@ const Home = () => {
     <div>
       <Banner />
       <LatestMatch />
-      <AllCricketMatches />
+      <Matches />
       <SportsEvents />
       <SportsNews />
     </div>

@@ -1,10 +1,8 @@
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
 import Loader from "../../Shared/Loader/Loader";
-import CricketMatchCard from "./CricketMatchCard";
+import CricketMatchCard from "../Matches/CricketMatchCard";
 
 const AllCricketMatches = () => {
   // fetch data from database by react query
@@ -23,61 +21,22 @@ const AllCricketMatches = () => {
 
   return (
     <Container maxWidth="lg" sx={{ marginY: "90px" }}>
-      {/* Comp Header */}
-      <Box
+      <Typography
+        component="h6"
+        variant="h6"
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
+          textAlign: "center",
+          fontWeight: "bold",
+          fontSize: "24px",
           marginBottom: "30px",
+          background:
+            "-webkit-linear-gradient(45deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
         }}
       >
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            fontWeight: "bold",
-            fontSize: "24px",
-          }}
-        >
-          All{" "}
-          <Typography
-            component="span"
-            variant="span"
-            sx={{
-              background:
-                "-webkit-linear-gradient(45deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Cricket Matches
-          </Typography>
-        </Typography>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Button
-            sx={{
-              fontWeight: "bold",
-              fontSize: "15px",
-              textTransform: "capitalize",
-              background:
-                "-webkit-linear-gradient(45deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-            component={Link}
-            to="all-cricket-matches"
-            size="small"
-            color="primary"
-          >
-            More Matches <ArrowRightAltIcon />
-          </Button>
-        </Box>
-      </Box>
+        All Cricket Matches
+      </Typography>
 
       {/* Render Cricket Match Card */}
       <Grid container spacing={2}>

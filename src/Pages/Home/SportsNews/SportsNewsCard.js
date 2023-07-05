@@ -43,7 +43,7 @@ const SportsNewsCard = ({ news }) => {
             {news.newsTitle}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {news.content}
+            {news.content.substring(0, 250) + " ..."}
           </Typography>
         </CardContent>
         <CardActions>

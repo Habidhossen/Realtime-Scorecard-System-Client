@@ -12,11 +12,11 @@ import MakeAdmin from "../../pages/Dashboard/MakeAdmin/MakeAdmin";
 import ManageCricketMatch from "../../pages/Dashboard/ManageCricketMatch/ManageCricketMatch";
 import News from "../../pages/Dashboard/News/News";
 import AboutPage from "../../pages/Home/AboutPage/AboutPage";
+import AllCricketMatches from "../../pages/Home/AllCricketMatches/AllCricketMatches";
 import AllSportsEvents from "../../pages/Home/AllSportsEvents/AllSportsEvents";
 import AllSportsNews from "../../pages/Home/AllSportsNews/AllSportsNews";
 import Home from "../../pages/Home/Home/Home";
 import LatestMatchDetails from "../../pages/Home/LatestMatch/LatestMatchDetails";
-import MatchSchedule from "../../pages/Home/MatchSchedule/MatchSchedule";
 import SportsNewsDetails from "../../pages/Home/SportsNews/SportsNewsDetails";
 import WatchLiveMatch from "../../pages/Home/WatchLiveMatch/WatchLiveMatch";
 import Login from "../../pages/Login/Login";
@@ -58,8 +58,8 @@ const router = createBrowserRouter([
         element: <AllSportsEvents />,
       },
       {
-        path: "/match-schedule",
-        element: <MatchSchedule />,
+        path: "/cricket-matches",
+        element: <AllCricketMatches />,
       },
       {
         path: "/about",

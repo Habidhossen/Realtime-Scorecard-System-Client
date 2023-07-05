@@ -20,19 +20,15 @@ const navItems = [
     href: "",
   },
   {
-    name: "Watch Live",
-    href: "live-match",
+    name: "Matches",
+    href: "cricket-matches",
   },
   {
-    name: "Match Schedule",
-    href: "match-schedule",
-  },
-  {
-    name: "Sports News",
+    name: "Sport News",
     href: "all-sports-news",
   },
   {
-    name: "Sports Events",
+    name: "Sport Events",
     href: "all-sports-events",
   },
   {

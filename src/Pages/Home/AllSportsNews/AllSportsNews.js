@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useQuery } from "react-query";
 import Loader from "../../Shared/Loader/Loader";
@@ -16,7 +16,7 @@ const AllSportsNews = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ marginTop: "70px" }}>
+    <Container maxWidth="lg" sx={{ marginY: "90px" }}>
       <Typography
         component="h6"
         variant="h6"
@@ -24,23 +24,21 @@ const AllSportsNews = () => {
           textAlign: "center",
           fontWeight: "bold",
           fontSize: "24px",
-          marginBottom: "40px",
+          marginBottom: "30px",
+          background:
+            "-webkit-linear-gradient(45deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
         }}
       >
         All Sport News
       </Typography>
 
-      {/* <Grid container>
-        {newsData.map((news) => (
-          <SportsNewsCard />
-        ))}
-      </Grid> */}
-
-      <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-        {news.data.map((news) => (
-          <SportsNewsCard key={news._id} news={news} />
-        ))}
-      </Box>
+      <Grid container spacing={2}>
+        {news.data
+          .map((news) => <SportsNewsCard key={news._id} news={news} />)
+          .reverse()}
+      </Grid>
     </Container>
   );
 };
