@@ -4,12 +4,16 @@ import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import Loader from "../../Shared/Loader/Loader";
-import SportsNewsCard from "./SportsNewsCard";
+import CricketMatchCard from "./CricketMatchCard";
 
-const SportsNews = () => {
+const AllCricketMatches = () => {
   // fetch data from database by react query
-  const { data: news, isLoading, refetch } = useQuery("news", () =>
-    fetch("http://localhost:5000/api/v1/news").then((res) => res.json())
+  const { data: cricketMatches, isLoading, refetch } = useQuery(
+    "CricketMatch",
+    () =>
+      fetch("http://localhost:5000/api/v1/cricket-match").then((res) =>
+        res.json()
+      )
   );
 
   // loading
@@ -35,7 +39,7 @@ const SportsNews = () => {
             fontSize: "24px",
           }}
         >
-          Latest{" "}
+          All{" "}
           <Typography
             component="span"
             variant="span"
@@ -46,7 +50,7 @@ const SportsNews = () => {
               WebkitTextFillColor: "transparent",
             }}
           >
-            Sport News
+            Cricket Matches
           </Typography>
         </Typography>
         <Box
@@ -66,28 +70,23 @@ const SportsNews = () => {
               WebkitTextFillColor: "transparent",
             }}
             component={Link}
-            to="all-sports-news"
+            to="all-cricket-matches"
             size="small"
             color="primary"
           >
-            See all News <ArrowRightAltIcon />
+            More Matches <ArrowRightAltIcon />
           </Button>
         </Box>
       </Box>
 
+      {/* Render Cricket Match Card */}
       <Grid container spacing={2}>
-        {news.data.map((news) => (
-          <SportsNewsCard key={news._id} news={news} />
+        {cricketMatches.data.map((match) => (
+          <CricketMatchCard key={match._id} match={match} />
         ))}
       </Grid>
-
-      {/* <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
-        {news.data.map((news) => (
-          <SportsNewsCard key={news._id} news={news} />
-        ))}
-      </Box> */}
     </Container>
   );
 };
 
-export default SportsNews;
+export default AllCricketMatches;

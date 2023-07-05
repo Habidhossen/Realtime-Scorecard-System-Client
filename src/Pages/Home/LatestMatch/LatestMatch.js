@@ -1,4 +1,4 @@
-import { Container, Paper, Typography } from "@mui/material";
+import { Box, Container, Paper, Typography } from "@mui/material";
 import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
@@ -73,19 +73,38 @@ const LatestMatch = () => {
   const bowlingTeamTotalWickets = bowlingTeam.players.length - 1;
 
   return (
-    <Container maxWidth="lg" sx={{ marginTop: "70px" }}>
-      <Typography
-        component="h6"
-        variant="h6"
+    <Container maxWidth="lg" sx={{ marginY: "90px" }}>
+      {/* Comp Header */}
+      <Box
         sx={{
-          textAlign: "center",
-          fontWeight: "bold",
-          fontSize: "24px",
-          marginY: "20px",
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "30px",
         }}
       >
-        Recent Cricket Matches
-      </Typography>
+        <Typography
+          component="h6"
+          variant="h6"
+          sx={{
+            fontWeight: "bold",
+            fontSize: "24px",
+          }}
+        >
+          Recent{" "}
+          <Typography
+            component="span"
+            variant="span"
+            sx={{
+              background:
+                "-webkit-linear-gradient(45deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Match
+          </Typography>
+        </Typography>
+      </Box>
       <Paper
         elevation={0}
         sx={{

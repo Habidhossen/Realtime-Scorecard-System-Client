@@ -70,7 +70,19 @@ const LatestMatchDetails = () => {
           marginBottom: "22px",
         }}
       >
-        {battingTeam.name} vs {bowlingTeam.name} Match Details
+        <Typography
+          component="span"
+          variant="span"
+          sx={{
+            background:
+              "-webkit-linear-gradient(180deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          {battingTeam.name} vs {bowlingTeam.name}
+        </Typography>{" "}
+        Match Details
       </Typography>
 
       <Paper

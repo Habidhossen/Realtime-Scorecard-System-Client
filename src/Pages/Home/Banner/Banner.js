@@ -20,8 +20,8 @@ const Banner = () => {
 
   const bannerTextStyles = {
     color: "white",
-    textShadow: "1px 1px #000000",
     maxWidth: "600px",
+    marginTop: "60px",
   };
 
   const bannerButton = {
@@ -47,7 +47,20 @@ const Banner = () => {
             fontSize: "60px",
           }}
         >
-          Get Live Sports and Updates
+          Get{" "}
+          <Typography
+            component="span"
+            variant="span"
+            sx={{
+              background:
+                "-webkit-linear-gradient(102.55deg, #85f8c1 20.86%, #078a5b 92.2%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Live Sports
+          </Typography>{" "}
+          and Updates
         </Typography>
         <Typography variant="subtitle1" marginTop={2} marginBottom={2}>
           Stay up-to-date with live scores, match schedules, and exciting sports

@@ -104,7 +104,14 @@ const Dashboard = () => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="absolute" color="primary" open={open}>
+      <AppBar
+        position="absolute"
+        open={open}
+        sx={{
+          background:
+            "linear-gradient(105.89deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
+        }}
+      >
         <Toolbar
           sx={{
             pr: "24px", // keep right padding when drawer closed

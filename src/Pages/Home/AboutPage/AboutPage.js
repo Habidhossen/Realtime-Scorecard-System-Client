@@ -3,10 +3,11 @@ import React from "react";
 
 const AboutPage = () => {
   return (
-    <Container maxWidth="lg" sx={{ marginTop: "120px" }}>
+    <Container maxWidth="lg" sx={{ marginTop: "120px", marginBottom: "50px" }}>
       <Paper
         sx={{
-          backgroundImage: "linear-gradient(to right, #D5D0E5, #F3E6E8)",
+          backgroundImage:
+            "linear-gradient(102.55deg, #85f8c1 20.86%, #078a5b 92.2%)",
           color: "text",
           borderRadius: "8px",
           padding: "30px 20px",

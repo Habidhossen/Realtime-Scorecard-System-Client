@@ -18,43 +18,67 @@ const SportsEvents = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ marginTop: "70px" }}>
-      <Typography
-        component="h6"
-        variant="h6"
+    <Container maxWidth="lg" sx={{ marginY: "90px" }}>
+      {/* Comp Header */}
+      <Box
         sx={{
-          textAlign: "center",
-          fontWeight: "bold",
-          fontSize: "24px",
-          marginY: "20px",
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "30px",
         }}
       >
-        Upcoming Sport Events
-      </Typography>
+        <Typography
+          component="h6"
+          variant="h6"
+          sx={{
+            fontWeight: "bold",
+            fontSize: "24px",
+          }}
+        >
+          Upcoming{" "}
+          <Typography
+            component="span"
+            variant="span"
+            sx={{
+              background:
+                "-webkit-linear-gradient(45deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Sport Events
+          </Typography>
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <Button
+            sx={{
+              fontWeight: "bold",
+              fontSize: "15px",
+              textTransform: "capitalize",
+              background:
+                "-webkit-linear-gradient(45deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+            component={Link}
+            to="all-sports-events"
+            size="small"
+            color="primary"
+          >
+            See more Events <ArrowRightAltIcon />
+          </Button>
+        </Box>
+      </Box>
 
       {/* rendering sports events card */}
       {events.data
         .map((event) => <SportsEventsCard key={event._id} event={event} />)
         .slice(0, 1)}
-
-      {/* footer button */}
-      <Box
-        sx={{ display: "flex", justifyContent: "flex-end", marginTop: "10px" }}
-      >
-        <Button
-          sx={{
-            fontWeight: "bold",
-            fontSize: "15px",
-            textTransform: "capitalize",
-          }}
-          component={Link}
-          to="all-sports-events"
-          size="small"
-          color="primary"
-        >
-          See more Events <ArrowRightAltIcon />
-        </Button>
-      </Box>
     </Container>
   );
 };

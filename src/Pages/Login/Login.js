@@ -107,7 +107,11 @@ const Login = () => {
         variant="contained"
         color="primary"
         size="large"
-        sx={{ marginTop: "16px" }}
+        sx={{
+          background: "linear-gradient(150deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
+          marginBottom: "8px",
+          marginTop: "16px",
+        }}
       >
         Login
       </Button>

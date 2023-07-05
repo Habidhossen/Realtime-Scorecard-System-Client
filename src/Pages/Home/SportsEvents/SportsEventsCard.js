@@ -5,10 +5,11 @@ const SportsEventsCard = ({ event }) => {
   return (
     <Paper
       sx={{
-        backgroundImage: "linear-gradient(to right, #673AB7, #512DA8)",
+        backgroundImage:
+          "linear-gradient(105.89deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
         color: "#ffffff",
         borderRadius: "8px",
-        paddingY: "60px",
+        paddingY: "50px",
       }}
     >
       <Typography
@@ -19,10 +20,30 @@ const SportsEventsCard = ({ event }) => {
           fontWeight: "bold",
           fontSize: "34px",
           textTransform: "uppercase",
-          marginBottom: "38px",
         }}
       >
         {event.eventName}
+      </Typography>
+      <Typography
+        component="h6"
+        variant="h6"
+        sx={{
+          textAlign: "center",
+          fontSize: "16px",
+        }}
+      >
+        ({event.sportType} Event)
+      </Typography>
+      <Typography
+        component="p"
+        variant="p"
+        sx={{
+          textAlign: "center",
+          fontSize: "16px",
+          marginY: "40px",
+        }}
+      >
+        {event.desc}
       </Typography>
       <Typography
         component="h6"
