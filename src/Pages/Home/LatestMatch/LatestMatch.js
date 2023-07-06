@@ -1,7 +1,9 @@
 import { Box, Container, Paper, Typography } from "@mui/material";
+import Lottie from "lottie-react";
 import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
+import liveAnimation from "../../../assets/lotties/live-02.json";
 import Loader from "../../Shared/Loader/Loader";
 
 const LatestMatch = () => {
@@ -105,54 +107,99 @@ const LatestMatch = () => {
           </Typography>
         </Typography>
       </Box>
+      {/* content */}
       <Paper
         elevation={0}
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
+          // alignItems: "center",
+          // justifyContent: "center",
           borderRadius: "8px",
-          paddingY: "50px",
+          padding: "50px",
         }}
       >
         <Typography
           component="h6"
           variant="h6"
           sx={{
-            textAlign: "center",
             fontWeight: "bold",
-            fontSize: "18px",
+            fontSize: "20px",
             marginBottom: "4px",
           }}
         >
           {battingTeam.name} vs {bowlingTeam.name}
         </Typography>
+
         <Typography
           component="p"
           variant="p"
           sx={{
-            textAlign: "center",
             fontSize: "14px",
-            marginBottom: "14px",
+            marginBottom: "18px",
           }}
         >
           {tossWinner} won the toss and elect to {tossChoice}
         </Typography>
-        <Typography
-          component="h6"
-          variant="h6"
+
+        <Box
           sx={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: "22px",
-            marginBottom: "40px",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "20px",
           }}
         >
-          {`${bowlingTeam.name} ${bowlingTeam.runs}/${bowlingTeam.wickets} (${bowlingTeam.overs} overs)`}
-        </Typography>
+          <Typography component="span" variant="span">
+            <Lottie
+              animationData={liveAnimation}
+              style={{ width: "40px", marginTop: "4px" }}
+            />
+          </Typography>
+
+          <Typography
+            component="h6"
+            variant="h6"
+            sx={{
+              textAlign: "center",
+              fontWeight: "bold",
+              fontSize: "22px",
+            }}
+          >
+            {`${bowlingTeam.name} ${bowlingTeam.runs}/${bowlingTeam.wickets} (${bowlingTeam.overs} overs)`}
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            marginBottom: "20px",
+          }}
+        >
+          <Typography component="span" variant="span">
+            <Lottie
+              animationData={liveAnimation}
+              style={{ width: "40px", marginTop: "4px" }}
+            />
+          </Typography>
+
+          <Typography
+            component="h6"
+            variant="h6"
+            sx={{
+              textAlign: "center",
+              fontWeight: "bold",
+              fontSize: "22px",
+            }}
+          >
+            {`${bowlingTeam.name} ${bowlingTeam.runs}/${bowlingTeam.wickets} (${bowlingTeam.overs} overs)`}
+          </Typography>
+        </Box>
+
         <Link to="/latest-match-details" style={scorecardButton}>
-          Scorecard & more info
+          Scorecard
         </Link>
       </Paper>
     </Container>

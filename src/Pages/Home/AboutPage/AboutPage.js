@@ -3,12 +3,13 @@ import React from "react";
 
 const AboutPage = () => {
   return (
-    <Container maxWidth="lg" sx={{ marginTop: "120px", marginBottom: "50px" }}>
+    <Container maxWidth="md" sx={{ marginTop: "100px", marginBottom: "30px" }}>
       <Paper
+        elevation={0}
         sx={{
           backgroundImage:
-            "linear-gradient(102.55deg, #85f8c1 20.86%, #078a5b 92.2%)",
-          color: "text",
+            "linear-gradient(105.89deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
+          color: "#FFFFFF",
           borderRadius: "8px",
           padding: "30px 20px",
         }}

@@ -1,3 +1,4 @@
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import { Box, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
 
@@ -31,9 +32,15 @@ const CricketMatchCard = ({ match }) => {
             component="p"
             variant="p"
             sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "2px",
               fontSize: "14px",
             }}
           >
+            <LocationOnRoundedIcon
+              sx={{ fontSize: "16px", color: "#b80f9d" }}
+            />{" "}
             {match.venue}
           </Typography>
         </Box>
@@ -111,7 +118,7 @@ const CricketMatchCard = ({ match }) => {
           sx={{
             fontSize: "14px",
             marginTop: "20px",
-            color: "#078a5b",
+            color: "#b80f9d",
           }}
         >
           {match.status}
