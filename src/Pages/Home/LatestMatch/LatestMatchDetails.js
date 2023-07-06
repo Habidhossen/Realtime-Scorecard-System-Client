@@ -1,6 +1,8 @@
 import { Box, Container, Paper, Typography } from "@mui/material";
+import Lottie from "lottie-react";
 import React from "react";
 import { useQuery } from "react-query";
+import liveAnimation from "../../../assets/lotties/live-02.json";
 import ScorecardTable from "../../Dashboard/Cricket/ScorecardTable";
 import Loader from "../../Shared/Loader/Loader";
 
@@ -67,7 +69,6 @@ const LatestMatchDetails = () => {
           textAlign: "center",
           fontWeight: "bold",
           fontSize: "20px",
-          marginBottom: "22px",
         }}
       >
         <Typography
@@ -85,57 +86,88 @@ const LatestMatchDetails = () => {
         Match Details
       </Typography>
 
+      {/* live animation */}
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Lottie animationData={liveAnimation} style={{ width: "40px" }} />
+      </Box>
+
       <Paper
         elevation={0}
-        sx={{ padding: "18px", borderRadius: "18px", marginBottom: "20px" }}
+        sx={{
+          padding: "18px",
+          borderRadius: "18px",
+          marginBottom: "20px",
+          marginTop: "24px",
+        }}
       >
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Typography
             component="h6"
             variant="h6"
-            sx={{ textAlign: "center", fontSize: "20px", fontWeight: "bold" }}
+            sx={{ textAlign: "center", fontSize: "18px", fontWeight: "bold" }}
           >
             {battingTeam.name}
           </Typography>
           <Typography
             component="h6"
             variant="h6"
-            sx={{ textAlign: "center", fontSize: "16px" }}
+            sx={{ textAlign: "center", fontSize: "15px" }}
           >
-            {`(${battingTeam.overs} ov) `}
+            {`(${battingTeam.overs}/${totalOver} ov) `}
             <Typography
               variant="span"
               component="span"
-              sx={{ fontSize: "20px", fontWeight: "bold" }}
+              sx={{ fontSize: "18px", fontWeight: "bold" }}
             >
-              {`${battingTeam.runs}/${battingTeam.wickets}`}
+              {`${battingTeam.runs}-${battingTeam.wickets}`}
             </Typography>
           </Typography>
         </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            borderBottom: "1px solid #d1d1d1",
+            paddingBottom: "10px",
+          }}
+        >
           <Typography
             component="h6"
             variant="h6"
-            sx={{ textAlign: "center", fontSize: "20px", fontWeight: "bold" }}
+            sx={{ textAlign: "center", fontSize: "18px", fontWeight: "bold" }}
           >
             {bowlingTeam.name}
           </Typography>
           <Typography
             component="h6"
             variant="h6"
-            sx={{ textAlign: "center", fontSize: "16px" }}
+            sx={{ textAlign: "center", fontSize: "15px" }}
           >
-            {`(${bowlingTeam.overs} ov) `}
+            {`(${bowlingTeam.overs}/${totalOver} ov) `}
             <Typography
               variant="span"
               component="span"
-              sx={{ fontSize: "20px", fontWeight: "bold" }}
+              sx={{ fontSize: "18px", fontWeight: "bold" }}
             >
-              {`${bowlingTeam.runs}/${bowlingTeam.wickets}`}
+              {`${bowlingTeam.runs}-${bowlingTeam.wickets}`}
             </Typography>
           </Typography>
         </Box>
+
+        <Typography
+          component="p"
+          variant="p"
+          sx={{
+            fontSize: "13px",
+            marginTop: "6px",
+          }}
+        >
+          {battingTeam.name} RR:{" "}
+          {(battingTeam.runs / battingTeam.overs).toFixed(2)} &nbsp;•&nbsp;{" "}
+          {bowlingTeam.name} RR:{" "}
+          {(bowlingTeam.runs / bowlingTeam.overs).toFixed(2)}
+        </Typography>
 
         <Typography
           component="p"
@@ -202,7 +234,6 @@ const LatestMatchDetails = () => {
           )}
         </Typography>
       </Paper>
-
       {/* rendering Scorecard Table */}
       <ScorecardTable bowlingTeam={bowlingTeam} battingTeam={battingTeam} />
     </Container>

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import NewsTable from "./NewsTable";
 
 const News = () => {
@@ -63,10 +64,7 @@ const News = () => {
     })
       .then((response) => response.json())
       .then((data) => data);
-    // toast.success("Event added successfully", {
-    //   theme: "colored",
-    //   autoClose: 3000,
-    // });
+    toast.success("Successfully news added!");
     reset();
     handleClose();
   };

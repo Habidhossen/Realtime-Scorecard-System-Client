@@ -14,6 +14,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
 import Loader from "../../Shared/Loader/Loader";
@@ -72,7 +73,7 @@ const MakeAdmin = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        toast.success("Successfully admin added!");
       })
       .catch((error) => {
         console.error("Error:", error);

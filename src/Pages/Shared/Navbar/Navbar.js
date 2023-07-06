@@ -10,9 +10,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../../assets/images/scorecard-logo.png";
 
-const drawerWidth = 240;
-// const navItems = ["Home", "About", "Contact"];
+const drawerWidth = 240; //set drawer width
 
 const navItems = [
   {
@@ -47,12 +47,8 @@ const Navbar = (props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography
-        component="h6"
-        variant="h6"
-        sx={{ my: 2, fontSize: "16px", fontWeight: "bold" }}
-      >
-        Scorecard
+      <Typography component="h6" variant="h6">
+        <img src={logo} style={{ width: "100px" }} />
       </Typography>
       <Divider />
       <List>
@@ -97,21 +93,10 @@ const Navbar = (props) => {
             sx={{
               flexGrow: 1,
               display: { xs: "none", sm: "block" },
-              fontSize: "20px",
-              fontWeight: "bold",
-              color: "#000000",
-              textDecoration: "none",
             }}
           >
-            Scorecard
+            <img src={logo} style={{ width: "100px" }} />
           </Typography>
-          {/* <Box
-            component={Link}
-            to="/h"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Scorecard
-          </Box> */}
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item, index) => (
               <Button

@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useQuery } from "react-query";
 import Loader from "../../Shared/Loader/Loader";
 import ScoreUpdateFormA from "./ScoreUpdateFormA";
@@ -469,10 +470,7 @@ const Cricket = () => {
     })
       .then((response) => response.json())
       .then((data) => data);
-    // toast.success("Event added successfully", {
-    //   theme: "colored",
-    //   autoClose: 3000,
-    // });
+    toast.success("Successfully cricket match added!");
     reset();
     handleClose();
   };

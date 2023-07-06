@@ -31,6 +31,7 @@ import { signOut } from "firebase/auth";
 import * as React from "react";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Toaster } from "react-hot-toast";
 import { Link, Outlet } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
 
@@ -333,6 +334,9 @@ const Dashboard = () => {
           <Outlet />
         </Container>
       </Box>
+
+      {/* React Hot Toast */}
+      <Toaster />
     </Box>
   );
 };

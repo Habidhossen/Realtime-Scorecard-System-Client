@@ -10,6 +10,7 @@ import {
   TableRow,
 } from "@mui/material";
 import React from "react";
+import toast from "react-hot-toast";
 import { useQuery } from "react-query";
 import Loader from "../../Shared/Loader/Loader";
 
@@ -35,9 +36,7 @@ const NewsTable = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "success") {
-            // toast.success("Event deleted successfully", {
-            //   autoClose: 3000,
-            // });
+            toast.success("Successfully news deleted!");
             refetch();
           }
         });

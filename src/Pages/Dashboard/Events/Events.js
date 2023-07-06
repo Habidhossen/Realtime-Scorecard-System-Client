@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import EventsTable from "./EventsTable";
 
 const Events = () => {
@@ -76,10 +77,7 @@ const Events = () => {
     })
       .then((response) => response.json())
       .then((data) => data);
-    // toast.success("Event added successfully", {
-    //   theme: "colored",
-    //   autoClose: 3000,
-    // });
+    toast.success("Successfully event added!");
     reset();
     handleClose();
   };
