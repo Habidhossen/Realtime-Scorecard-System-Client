@@ -1,9 +1,12 @@
-import { Box, Container, Paper, Typography } from "@mui/material";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import { Box, Button, Container, Paper, Typography } from "@mui/material";
 import Lottie from "lottie-react";
 import React from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import liveAnimation from "../../../assets/lotties/live-02.json";
+import vsAnimation from "../../../assets/lotties/vs.json";
 import Loader from "../../Shared/Loader/Loader";
 
 const LatestMatch = () => {
@@ -111,96 +114,153 @@ const LatestMatch = () => {
       <Paper
         elevation={0}
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          // alignItems: "center",
-          // justifyContent: "center",
-          borderRadius: "8px",
-          padding: "50px",
+          borderRadius: "10px",
+          padding: "30px 40px",
+          boxShadow:
+            "rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px",
         }}
       >
-        <Typography
-          component="h6"
-          variant="h6"
+        <Box
           sx={{
-            fontWeight: "bold",
-            fontSize: "20px",
-            marginBottom: "4px",
+            display: "flex",
+            justifyContent: "space-between",
+            borderBottom: "1px solid #d1d1d1",
+            paddingBottom: "8px",
           }}
         >
-          {battingTeam.name} vs {bowlingTeam.name}
-        </Typography>
+          <Box sx={{ display: "flex", gap: "8px" }}>
+            <Lottie animationData={liveAnimation} style={{ width: "40px" }} />
+            <Typography
+              component="h6"
+              variant="h6"
+              sx={{
+                fontWeight: "bold",
+                fontSize: "14px",
+              }}
+            >
+              {name}
+            </Typography>
+          </Box>
+          <Box>
+            <Typography
+              component="p"
+              variant="p"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "2px",
+                fontSize: "14px",
+              }}
+            >
+              <LocationOnRoundedIcon
+                sx={{ fontSize: "16px", color: "#b80f9d" }}
+              />{" "}
+              {venue} &nbsp;•&nbsp; {date}
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "16px",
+          }}
+        >
+          <Box>
+            <Typography
+              component="h6"
+              variant="h6"
+              sx={{
+                fontWeight: "bold",
+                fontSize: "16px",
+              }}
+            >
+              {battingTeam.name}
+            </Typography>
+            <Typography
+              component="h6"
+              variant="h6"
+              sx={{
+                fontSize: "14px",
+              }}
+            >
+              <Typography
+                component="span"
+                variant="span"
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                }}
+              >
+                {`${battingTeam.runs}/${battingTeam.wickets}`}
+              </Typography>
+              {` (${battingTeam.overs} ov)`}
+            </Typography>
+          </Box>
+          <Box>
+            <Lottie animationData={vsAnimation} style={{ width: "60px" }} />
+          </Box>
+          <Box>
+            <Typography
+              component="h6"
+              variant="h6"
+              sx={{
+                fontWeight: "bold",
+                fontSize: "16px",
+              }}
+            >
+              {bowlingTeam.name}
+            </Typography>
+            <Typography
+              component="h6"
+              variant="h6"
+              sx={{
+                fontSize: "14px",
+              }}
+            >
+              <Typography
+                component="span"
+                variant="span"
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "18px",
+                }}
+              >
+                {`${bowlingTeam.runs}/${bowlingTeam.wickets}`}
+              </Typography>
+              {` (${bowlingTeam.overs} ov)`}
+            </Typography>
+          </Box>
+        </Box>
 
         <Typography
           component="p"
           variant="p"
           sx={{
-            fontSize: "14px",
-            marginBottom: "18px",
+            fontSize: "13px",
+            color: "#b80f9d",
+            marginTop: "6px",
+            marginBottom: "16px",
           }}
         >
           {tossWinner} won the toss and elect to {tossChoice}
         </Typography>
 
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "20px",
-          }}
-        >
-          <Typography component="span" variant="span">
-            <Lottie
-              animationData={liveAnimation}
-              style={{ width: "40px", marginTop: "4px" }}
-            />
-          </Typography>
-
-          <Typography
-            component="h6"
-            variant="h6"
-            sx={{
-              textAlign: "center",
-              fontWeight: "bold",
-              fontSize: "22px",
-            }}
-          >
-            {`${bowlingTeam.name} ${bowlingTeam.runs}/${bowlingTeam.wickets} (${bowlingTeam.overs} overs)`}
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "20px",
-          }}
-        >
-          <Typography component="span" variant="span">
-            <Lottie
-              animationData={liveAnimation}
-              style={{ width: "40px", marginTop: "4px" }}
-            />
-          </Typography>
-
-          <Typography
-            component="h6"
-            variant="h6"
-            sx={{
-              textAlign: "center",
-              fontWeight: "bold",
-              fontSize: "22px",
-            }}
-          >
-            {`${bowlingTeam.name} ${bowlingTeam.runs}/${bowlingTeam.wickets} (${bowlingTeam.overs} overs)`}
-          </Typography>
-        </Box>
-
-        <Link to="/latest-match-details" style={scorecardButton}>
+        {/* <Link to="/latest-match-details" style={scorecardButton}>
           Scorecard
-        </Link>
+        </Link> */}
+        <Button
+          component={Link}
+          to="/latest-match-details"
+          size="small"
+          variant="contained"
+          sx={{
+            background: "linear-gradient(45deg, #b80f9d 7.77%, #1b1e5c 95.22%)",
+          }}
+        >
+          Live Score <ArrowRightAltIcon />
+        </Button>
       </Paper>
     </Container>
   );
