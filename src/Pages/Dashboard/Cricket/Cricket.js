@@ -15,10 +15,12 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import Lottie from "lottie-react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useQuery } from "react-query";
+import liveAnimation from "../../../assets/lotties/live-02.json";
 import Loader from "../../Shared/Loader/Loader";
 import ScoreUpdateFormA from "./ScoreUpdateFormA";
 import ScoreUpdateFormB from "./ScoreUpdateFormB";
@@ -1355,19 +1357,21 @@ const Cricket = () => {
       </Box>
       {/* SCORECARD HEADER COMPONENTS */}
       <Paper elevation={0} sx={{ padding: "14px", marginBottom: "8px" }}>
-        <Typography
-          component="h6"
-          variant="h6"
-          sx={{
-            color: "#009270",
-            textAlign: "center",
-            fontWeight: "700",
-            fontSize: "15px",
-            marginBottom: "2px",
-          }}
-        >
-          {name} (Live)
-        </Typography>
+        <Box sx={{ display: "flex", gap: "8px", justifyContent: "center" }}>
+          {status === "In Progress" && (
+            <Lottie animationData={liveAnimation} style={{ width: "40px" }} />
+          )}
+          <Typography
+            component="h6"
+            variant="h6"
+            sx={{
+              fontWeight: "bold",
+              fontSize: "15px",
+            }}
+          >
+            {name}
+          </Typography>
+        </Box>
 
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box>

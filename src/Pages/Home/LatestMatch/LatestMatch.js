@@ -10,20 +10,6 @@ import vsAnimation from "../../../assets/lotties/vs.json";
 import Loader from "../../Shared/Loader/Loader";
 
 const LatestMatch = () => {
-  // scorecard button
-  const scorecardButton = {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "4px",
-    fontSize: "14px",
-    backgroundColor: "transparent",
-    color: "black",
-    border: "black 1.5px solid",
-    borderRadius: "30px",
-    padding: "8px 20px",
-    textDecoration: "none",
-  };
-
   // fetch data from database by react query
   const {
     data: currentCricketMatches,
@@ -129,7 +115,9 @@ const LatestMatch = () => {
           }}
         >
           <Box sx={{ display: "flex", gap: "8px" }}>
-            <Lottie animationData={liveAnimation} style={{ width: "40px" }} />
+            {status === "In Progress" && (
+              <Lottie animationData={liveAnimation} style={{ width: "40px" }} />
+            )}
             <Typography
               component="h6"
               variant="h6"
@@ -244,12 +232,11 @@ const LatestMatch = () => {
             marginBottom: "16px",
           }}
         >
-          {tossWinner} won the toss and elect to {tossChoice}
+          {status === "In Progress"
+            ? `${tossWinner} won the toss and elect to ${tossChoice}`
+            : status}
         </Typography>
 
-        {/* <Link to="/latest-match-details" style={scorecardButton}>
-          Scorecard
-        </Link> */}
         <Button
           component={Link}
           to="/latest-match-details"

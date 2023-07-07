@@ -87,9 +87,11 @@ const LatestMatchDetails = () => {
       </Typography>
 
       {/* live animation */}
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Lottie animationData={liveAnimation} style={{ width: "40px" }} />
-      </Box>
+      {status === "In Progress" && (
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Lottie animationData={liveAnimation} style={{ width: "40px" }} />
+        </Box>
+      )}
 
       <Paper
         elevation={0}

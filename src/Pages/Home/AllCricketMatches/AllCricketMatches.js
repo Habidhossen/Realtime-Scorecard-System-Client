@@ -40,9 +40,9 @@ const AllCricketMatches = () => {
 
       {/* Render Cricket Match Card */}
       <Grid container spacing={2}>
-        {cricketMatches.data.map((match) => (
-          <CricketMatchCard key={match._id} match={match} />
-        ))}
+        {cricketMatches.data
+          .map((match) => <CricketMatchCard key={match._id} match={match} />)
+          .reverse()}
       </Grid>
     </Container>
   );

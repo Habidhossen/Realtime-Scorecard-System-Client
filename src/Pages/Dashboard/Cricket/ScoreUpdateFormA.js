@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const ScoreUpdateFormA = ({ bowlingTeam, battingTeam, matchId, refetch }) => {
   // handle react-hook-form
@@ -37,6 +38,7 @@ const ScoreUpdateFormA = ({ bowlingTeam, battingTeam, matchId, refetch }) => {
     })
       .then((response) => response.json())
       .then((data) => data);
+    toast.success("Score updated!");
     refetch();
     reset();
   };
@@ -210,7 +212,10 @@ const ScoreUpdateFormA = ({ bowlingTeam, battingTeam, matchId, refetch }) => {
         color="secondary"
         variant="contained"
         fullWidth
-        sx={{ marginTop: "20px" }}
+        sx={{
+          marginTop: "20px",
+          background: "#1b1e5c",
+        }}
       >
         Score Update ({battingTeam.name})
       </Button>

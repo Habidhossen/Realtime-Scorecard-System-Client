@@ -65,7 +65,7 @@ const Login = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <Typography variant="h6" textAlign="center" fontWeight="600" mb={4}>
-        Please login
+        Admin login
       </Typography>
 
       <FormControl sx={{ mb: 2 }} variant="outlined">

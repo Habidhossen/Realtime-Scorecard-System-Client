@@ -4,12 +4,20 @@ import Footer from "../../Shared/Footer/Footer";
 
 const DashboardHome = () => {
   // get formatted current date
-  const currentDate = new Date().toLocaleDateString("en-US", {
+  const currentDateTime = new Date();
+  const options = {
     weekday: "long",
     month: "long",
     day: "numeric",
     year: "numeric",
-  });
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+  const formattedDateTime = currentDateTime.toLocaleDateString(
+    "en-US",
+    options
+  );
 
   return (
     <Box>
@@ -17,16 +25,25 @@ const DashboardHome = () => {
         <Typography
           variant="h6"
           component="h6"
-          sx={{ fontSize: "24px", fontWeight: "bold", textAlign: "center" }}
+          sx={{
+            fontSize: "24px",
+            fontWeight: "bold",
+            textAlign: "center",
+            textTransform: "uppercase",
+          }}
         >
           Welcome to Realtime Scorecard System Dashboard
         </Typography>
         <Typography
           variant="h6"
           component="h6"
-          sx={{ fontSize: "18px", textAlign: "center" }}
+          sx={{
+            fontSize: "18px",
+            textAlign: "center",
+            textTransform: "uppercase",
+          }}
         >
-          {currentDate}
+          {formattedDateTime}
         </Typography>
       </Box>
 
