@@ -37,13 +37,16 @@ const ScoreUpdateFormB = ({
     };
 
     // send data to the server
-    fetch(`http://localhost:5000/api/v1/update-cricket-score/${matchId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(updateScoreData),
-    })
+    fetch(
+      `https://realtime-cricket-scorecard-server.onrender.com/api/v1/update-cricket-score/${matchId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(updateScoreData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => data);
     toast.success("Score updated!");
@@ -73,13 +76,16 @@ const ScoreUpdateFormB = ({
     const finalData = { status, matchWinner };
 
     // send data to the server
-    fetch(`http://localhost:5000/api/v1/finish-cricket-match/${matchId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(finalData),
-    })
+    fetch(
+      `https://realtime-cricket-scorecard-server.onrender.com/api/v1/finish-cricket-match/${matchId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(finalData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => data);
     toast.success("Match Finished!");

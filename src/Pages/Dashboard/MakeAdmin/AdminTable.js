@@ -14,7 +14,9 @@ import Loader from "../../Shared/Loader/Loader";
 const AdminTable = () => {
   // fetch data from database by react query
   const { data: admins, isLoading, refetch } = useQuery("admin", () =>
-    fetch("http://localhost:5000/api/v1/admin").then((res) => res.json())
+    fetch(
+      "https://realtime-cricket-scorecard-server.onrender.com/api/v1/admin"
+    ).then((res) => res.json())
   );
 
   // loading

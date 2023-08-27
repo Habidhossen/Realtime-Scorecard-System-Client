@@ -16,7 +16,7 @@ const SportsNewsCard = ({ news }) => {
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card>
-        <CardMedia sx={{ height: 180 }} image={news.coverImgLink} />
+        <CardMedia sx={{ height: 200 }} image={news.coverImgLink} />
         <CardContent>
           <Typography
             component="p"

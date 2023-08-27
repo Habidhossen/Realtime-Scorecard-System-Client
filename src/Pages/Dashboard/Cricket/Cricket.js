@@ -463,13 +463,16 @@ const Cricket = () => {
     });
 
     // send data to the server
-    fetch("http://localhost:5000/api/v1/cricket-match", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(matchData),
-    })
+    fetch(
+      "https://realtime-cricket-scorecard-server.onrender.com/api/v1/cricket-match",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(matchData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => data);
     toast.success("Successfully cricket match added!");
@@ -483,9 +486,9 @@ const Cricket = () => {
     isLoading,
     refetch,
   } = useQuery("currentCricketMatch", () =>
-    fetch("http://localhost:5000/api/v1/latest-cricket-match").then((res) =>
-      res.json()
-    )
+    fetch(
+      "https://realtime-cricket-scorecard-server.onrender.com/api/v1/latest-cricket-match"
+    ).then((res) => res.json())
   );
 
   // loading

@@ -17,7 +17,9 @@ import Loader from "../../Shared/Loader/Loader";
 const NewsTable = () => {
   // fetch data from database by react query
   const { data: news, isLoading, refetch } = useQuery("news", () =>
-    fetch("http://localhost:5000/api/v1/news").then((res) => res.json())
+    fetch(
+      "https://realtime-cricket-scorecard-server.onrender.com/api/v1/news"
+    ).then((res) => res.json())
   );
 
   // loading
@@ -30,9 +32,12 @@ const NewsTable = () => {
     const confirm = window.confirm("Are you sure you want to Delete?");
 
     if (confirm) {
-      fetch(`http://localhost:5000/api/v1/news/${id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://realtime-cricket-scorecard-server.onrender.com/api/v1/news/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "success") {

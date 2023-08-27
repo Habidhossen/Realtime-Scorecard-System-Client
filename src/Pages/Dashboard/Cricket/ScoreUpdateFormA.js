@@ -29,13 +29,16 @@ const ScoreUpdateFormA = ({ bowlingTeam, battingTeam, matchId, refetch }) => {
     };
 
     // send data to the server
-    fetch(`http://localhost:5000/api/v1/update-cricket-score/${matchId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(updateScoreData),
-    })
+    fetch(
+      `https://realtime-cricket-scorecard-server.onrender.com/api/v1/update-cricket-score/${matchId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(updateScoreData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => data);
     toast.success("Score updated!");

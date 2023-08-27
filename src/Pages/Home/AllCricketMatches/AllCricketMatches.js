@@ -9,9 +9,9 @@ const AllCricketMatches = () => {
   const { data: cricketMatches, isLoading, refetch } = useQuery(
     "CricketMatch",
     () =>
-      fetch("http://localhost:5000/api/v1/cricket-match").then((res) =>
-        res.json()
-      )
+      fetch(
+        "https://realtime-cricket-scorecard-server.onrender.com/api/v1/cricket-match"
+      ).then((res) => res.json())
   );
 
   // loading

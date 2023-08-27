@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Banner = () => {
   const bannerStyles = {
     backgroundImage:
-      "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
+      "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.ibb.co/wsnVPg8/cricket-scorecard-banner.png)",
     backgroundPosition: "center",
     backgroundSize: "cover",
     height: "100vh",

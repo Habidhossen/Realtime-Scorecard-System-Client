@@ -44,7 +44,8 @@ const News = () => {
     });
     // Check if the user provided a value for 'coverImgLink'
     if (!data.coverImgLink) {
-      data.coverImgLink = "https://i.ibb.co/V9K4RPC/sport-news-cover.png"; // If 'coverImgLink' is not provided, set the default value
+      data.coverImgLink =
+        "https://i.ibb.co/sCJj8SN/cricket-scorecard-news-cover.png"; // If 'coverImgLink' is not provided, set the default value
     }
     // create a new formatted object
     const newsData = {
@@ -55,13 +56,16 @@ const News = () => {
     };
 
     // send data to the server
-    fetch("http://localhost:5000/api/v1/news", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(newsData),
-    })
+    fetch(
+      "https://realtime-cricket-scorecard-server.onrender.com/api/v1/news",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(newsData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => data);
     toast.success("Successfully news added!");

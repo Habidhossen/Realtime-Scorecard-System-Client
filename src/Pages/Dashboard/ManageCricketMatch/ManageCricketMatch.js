@@ -21,9 +21,9 @@ const ManageCricketMatch = () => {
   const { data: cricketMatches, isLoading, refetch } = useQuery(
     "cricketMatch",
     () =>
-      fetch("http://localhost:5000/api/v1/cricket-match").then((res) =>
-        res.json()
-      )
+      fetch(
+        "https://realtime-cricket-scorecard-server.onrender.com/api/v1/cricket-match"
+      ).then((res) => res.json())
   );
 
   // loading
@@ -36,9 +36,12 @@ const ManageCricketMatch = () => {
     const confirm = window.confirm("Are you sure you want to Delete?");
 
     if (confirm) {
-      fetch(`http://localhost:5000/api/v1/cricket-match/${id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://realtime-cricket-scorecard-server.onrender.com/api/v1/cricket-match/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "success") {

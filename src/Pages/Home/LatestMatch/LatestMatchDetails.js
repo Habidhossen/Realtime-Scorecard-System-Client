@@ -13,9 +13,9 @@ const LatestMatchDetails = () => {
     isLoading,
     refetch,
   } = useQuery("currentCricketMatch", () =>
-    fetch("http://localhost:5000/api/v1/latest-cricket-match").then((res) =>
-      res.json()
-    )
+    fetch(
+      "https://realtime-cricket-scorecard-server.onrender.com/api/v1/latest-cricket-match"
+    ).then((res) => res.json())
   );
 
   // loading

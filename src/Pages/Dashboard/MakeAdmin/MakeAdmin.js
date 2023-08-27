@@ -64,13 +64,16 @@ const MakeAdmin = () => {
   // save user to database
   const saveUserDB = (name, email) => {
     const createUserData = { name, email };
-    fetch("http://localhost:5000/api/v1/admin", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(createUserData),
-    })
+    fetch(
+      "https://realtime-cricket-scorecard-server.onrender.com/api/v1/admin",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(createUserData),
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         toast.success("Successfully admin added!");

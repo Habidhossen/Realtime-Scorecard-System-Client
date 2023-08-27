@@ -9,7 +9,9 @@ import SportsEventsCard from "./SportsEventsCard";
 const SportsEvents = () => {
   // fetch data from database by react query
   const { data: events, isLoading, refetch } = useQuery("event", () =>
-    fetch("http://localhost:5000/api/v1/event").then((res) => res.json())
+    fetch(
+      "https://realtime-cricket-scorecard-server.onrender.com/api/v1/event"
+    ).then((res) => res.json())
   );
 
   // loading

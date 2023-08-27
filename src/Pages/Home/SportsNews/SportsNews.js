@@ -9,7 +9,9 @@ import SportsNewsCard from "./SportsNewsCard";
 const SportsNews = () => {
   // fetch data from database by react query
   const { data: news, isLoading, refetch } = useQuery("news", () =>
-    fetch("http://localhost:5000/api/v1/news").then((res) => res.json())
+    fetch(
+      "https://realtime-cricket-scorecard-server.onrender.com/api/v1/news"
+    ).then((res) => res.json())
   );
 
   // loading
